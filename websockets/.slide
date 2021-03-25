@@ -17,6 +17,9 @@ https://noobygames.de
 - WebSockets in Go
 - Real World Examples?
 
+## Wait what?
+.image assets/frontend.png _ 250
+
 ## ServerPush
 - Sometimes we want to push data to clients, without having the client ot ask for it.
 - Like: Bro, i have a lit *MEME* look at it!

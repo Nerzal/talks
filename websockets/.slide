@@ -30,7 +30,7 @@ https://noobygames.de
 ## ServerSentEvents
 - Provides *ServerPush*
 - Is based on a long lived HTTP connection
-- Max 6 SSE Connection / Browser
+- Max 6 SSE Connection per Browser per domain
 - Browser support is _good_
 - Very efficient good choice!
 

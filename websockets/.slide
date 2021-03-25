@@ -39,6 +39,7 @@ https://noobygames.de
 - *EventDriven* communication anyone? 
 - Connection stays open 
 - Send a message to 1-N consumer
+
 .image assets/websockets.png _ 650
 
 ## WebSockets in Go
@@ -68,10 +69,12 @@ or we use higher level abstractions and make use of JSON n stuff :)
 
 ## A little less low level
 - Start a http server and listen for connections.
+
 .code code/http.go
 
 ## Upgrade the connection
 - Upgrade to WebSocket connection and handle requests
+
 .code code/http2.go
 
 ## Handling the connection

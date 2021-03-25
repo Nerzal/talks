@@ -29,7 +29,7 @@ https://noobygames.de
 - Is based on a long lived HTTP connection
 - Max 6 SSE Connection / Browser
 - Browser support is _good_
-- Very Efficient good choice!
+- Very efficient good choice!
 
 ## WebSockets
 - Bidirectional communication

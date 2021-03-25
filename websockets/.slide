@@ -1,0 +1,83 @@
+Y u don't know Websockets?
+
+Now u know!
+
+Tobias Theel | ClariLab
+2021
+
+* Agenda
+- ServerPush
+- ServerSentEvents    
+- WebSockets
+- WebSockets in Go
+
+* ServerPush
+- Sometimes we want to push data to clients, without having the client ot ask for it.
+- Like: Bro, i have a lit *MEME* look at it!
+
+* Example flow of ServerPush
+.image assets/SSE.png _ 250
+
+
+* ServerSentEvents
+
+* 
+- Provides *ServerPush*
+- Is based on a long lived HTTP connection
+- Max 6 SSE Connection / Browser
+- Browser support is _good_
+- Very Efficient good choice!
+
+* WebSockets
+- Bidirectional communication
+- *EventDriven* communication anyone? 
+- Connection stays open 
+- Send a message to 1-N consumer
+.image assets/websockets.png _ 650
+
+* WebSockets in Go
+
+* Libs
+.image assets/ws_comparison.png _ 650
+
+* 
+So we use Gobwas
+- go get github.com/gobwas/ws
+
+Gobwas seems to be a good choice, as it is very versatile.
+We can use very low level connections and directly write on the socket, 
+or we use igher level abstractions and make use of JSON n stuff :) 
+
+* Listen on TCP and wait for connection
+.code code/init.go
+
+* Handle incoming frames
+.code code/receive.go
+
+* Send message
+- Write a message to the client
+- We can also directly write on the connection <3 
+
+.code code/send.go
+
+* A little less low level
+- Start a http server and listen for connections.
+.code code/http.go
+
+* Upgrade the connection
+- Upgrade to WebSocket connection and handle requests
+.code code/http2.go
+
+* Handling the connection
+.code code/http3.go
+
+* Real World Examples?
+- MQTT is capable of handling WebSocket connections
+- WebSockets can be used inside WASM
+- Social feeds
+- Multiplayer games
+- Collaborative editing/coding
+- Multimedia chats
+- Financial tickers
+- Sports updates
+- Clickstream data

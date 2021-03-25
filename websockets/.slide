@@ -10,8 +10,6 @@ tobias.theel@ClariLab.de
 https://noobygames.de
 @Nooby_Games
 
-
-
 ## Agenda
 - ServerPush
 - ServerSentEvents    
@@ -26,10 +24,7 @@ https://noobygames.de
 ## Example flow of ServerPush
 .image assets/SSE.png _ 250
 
-
 ## ServerSentEvents
-
-## 
 - Provides *ServerPush*
 - Is based on a long lived HTTP connection
 - Max 6 SSE Connection / Browser
@@ -48,7 +43,7 @@ https://noobygames.de
 ## Libs
 .image assets/ws_comparison.png _ 650
 
-## 
+## Gobwas
 So we use Gobwas
 > go get github.com/gobwas/ws
 

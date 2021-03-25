@@ -80,7 +80,7 @@ or we use higher level abstractions and make use of JSON n stuff :)
 ## Handling the connection
 .code code/http3.go
 
-# Real World Examples?
+## Real World Examples?
 - MQTT is capable of handling WebSocket connections
 - WebSockets can be used inside WASM
 - Social feeds

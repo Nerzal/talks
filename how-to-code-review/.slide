@@ -1,0 +1,280 @@
+# How to CodeReview
+How to do it properly!
+25 Mar 2021
+Tags: development, codereview
+Summary: An introduction to perform good code reviews
+
+Tobias Theel
+Princess and Lead Developer, Clarilab
+tobias.theel@ClariLab.de
+https://noobygames.de
+@Nooby_Games
+
+## Why Code reviews?
+
+- Ensure requirements are met
+- Find defects
+- Ensure code quality
+- Share knowledge
+
+.image https://i.imgflip.com/2rr8jx.jpg
+.caption Code Quality by [[https://imgflip.com/tag/code+quality][imgflip]]
+
+## Forget your ego!
+
+- Everyone makes mistakes!
+- You are *NOT* your code!
+- In tech everyone is continuously learning!
+- There is no such thing as a "small change"!
+- I don't care how senior you are!
+
+## Did not see that coming?!
+
+.image https://i.imgflip.com/1tid99.jpg
+.caption YOU DIDN'T SEE THAT COMING. by [[https://imgflip.com/i/1tid99][imgflip]]
+
+## Code reviews
+
+.image assets/code-review.jpeg
+.caption Merge Request by [[imagemag.ru][imagemag]]
+
+## Agenda
+
+- Prerequisite
+- Starting Point
+- Dive deep
+- Tooling
+- Issues    
+- Code Quality
+- Hot to not
+
+## Prerequisite
+
+Before one or multiple reviewer can actively check the code, the author need to make sure, that the change is reviewable.
+
+For a change to be reviewed under perfect conditions, the change should not be bigger than 200-400 LOC. 
+[Study results](https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/) from smartbear.
+
+They revealed, that a review of 200-400 LOC within a 60 to 90 minute timeframe should discover 70-90% of the defects.
+
+.image https://static1.smartbear.co/smartbear/media/images/product/collaborator/code-review-best-practices-figure-01.gif
+.caption Defect Density vs LOC by [[https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/][smartbear]]
+
+## Be descriptive
+
+Your PullRequest should be as descriptive as possible.
+
+Link the tickets, that the PR solves and include the essence of your change in the description.
+
+## Take your time
+
+Take your time, do not rush things! 
+
+A carefully performed review saves a lot of time AND money!
+
+Example: 
+
+Fixing a bug in Production costs 250€
+
+Fixing the same bug, but within a review process costs 20€
+
+(Costs may vary, just wanted to make a point)
+
+## Have a checklist
+
+Checklists can help to greatly improve the output of codereviews. 
+I'd say it is best practice to have standard checklists for your teams.
+
+Example:
+
+- Acceptance Criteria are met
+- Change is covered by tests
+- Tests are green / Change has been tested by the reviewer
+- Errors & Exceptions are handled correctly
+- No violations of the coding guidelines
+- No violations of the logging guidelines
+- No potential security issue found
+- (Author) Alcohol level is low enough
+
+## Starting Point
+
+What is most important, when reviewing a change?
+
+The change must reflect the requirements and meet the acceptance criteria.
+
+So you have to:
+1. Check Requirements
+2. Check if Requirements are fulfilled
+
+## Make sure that the code actually runs
+
+The code looks like it really implements all requirements! Nice! 
+
+So, now we have to make sure, that the code is able to build & run. 
+
+In the best case, we have tests, that automatically run, when a PR is being submitted.
+If that is the case, and the tests cover all requirements, easy this step is more or less done.
+
+If that is not the case, you have to checkout the code and try the change yourself!
+
+## Dive deep
+
+Do not just scratch the surface!
+
+It is mandatory for you as a reviewer to understand the following:
+
+1. What exactly is happening
+1. Why is it happening
+
+In order to really find issues, you need to **develop** the same **understanding** of the change as the author **of the change**.
+
+If the code is hard to understand, you found an issue! **Talk to the author**, ask questions, maybe also set up a meeting. 
+
+
+## Quality #1
+
+At the end of the day the goal is to have code that is:
+
+1. Easy to read
+1. Easy to maintain
+
+## Still hard to understand?
+
+The code is now clean and easy to read, but you are still not able to understand it entirely?
+
+Get help! Grab another person to review the code.
+
+Sometimes it is important to understand the business case, to be able to understand the code. 
+
+Let the ProductOwner educate you!
+
+## Tooling
+
+Make use of Tools to help you review the code.
+
+Example: Azure DevOps provides a wide range of features, that help you out. 
+
+You can:
+
+1. mark files as checked
+1. file suggestions for a change
+1. link Tickets and mention other branches etc.
+1. discuss issues using the comments
+
+## Automate all the things
+
+Make use of policies to automate the process.
+
+Examples: 
+
+- Add reviewers
+- Enforce at least 2 approvals for a review
+- Reset approvals on changes
+- Run linting
+- Run testing
+- Run static code analysis and annotate issues in the pr
+- Run nancy etc.
+
+
+## Issues
+
+Here are some rules how to handle issues:
+
+1. Be nice
+1. Be helpful
+1. Make suggestions
+1. Ask questions
+
+## Not every issue is a showstopper
+
+Some things do not have to be fixed immediately.
+
+1. Find minor issues
+1. Create a ticket
+1. Resolve the Comment
+
+## Code Quality
+
+Code Quality is important, but not the most important topic here.
+
+Bad architecture & bad design always lead to problems. Architecture and design choices should be documented somewhere.
+The documentation of design choices fit nicely in the tickets.
+
+So what can we check in terms of architecture and design?
+
+1. Does the change match the planned architecture?
+1. Does the change match the planned design?
+
+If not, raise a comment and point out, where the architecture / design has been violated.
+There can be **good reasons to violate** them.
+
+## Quick Fixes
+
+Some Quality issues can be easily addressed and fixed. This should be done before merging the PR.
+
+Here are some examples for easy quick fixes:
+
+- Function or Class has to many LOC
+- Violation of IoC principle
+- Violation of IOSP (Integration Operation Segregation Principle)
+
+## How to not
+.image https://imgs.xkcd.com/comics/code_quality.png
+.caption Code Quality by [[https://xkcd.com/1513/][xkcd]]
+
+## The "linter"
+
+You are NOT a linter! 
+
+**Do not comment on 200 lines**, that there is going to be a linter warning. 
+
+Instead, file a single comment that explains the what and why and tell the author to check the linter results again.
+
+## The "formatter"
+
+You are NOT a code formatting algorithm. 
+
+**Do not comment on 1337 lines**, that the formatting is off.
+
+Instead, tell the author to run a code formatting tool. Everyone of you should have one configured (IDE, gofmt etc.)
+
+.image http://blog.spreendigital.de/wp-content/uploads/2014/02/one-does-not-simply-disobey-a-standard.jpg
+.caption CodeFormatting by [[http://blog.spreendigital.de/wp-content/uploads/2014/02/one-does-not-simply-disobey-a-standard.jpg][blog.spreendigital.de]]
+
+## The "LGTM"
+
+Do not instant approve that stuff!
+
+Instead dive deep into the changes, understand them and **only approve**, **if you are really sure**!
+
+.image https://memegenerator.net/img/instances/58861605/looks-good-have-a-lgtm.jpg 350 350
+.caption LGTM by [[https://memegenerator.net/instance/58861605/thumbs-up-obama-looks-good-have-a-lgtm][memegenerator.net]]
+
+## The "Blocker"
+
+Do not block changes forever!
+
+Instead discuss issues and create tickets, if the issues are no showstopper! Things can be fixed later.
+
+.image https://www.memecreator.org/static/images/memes/5123684.jpg
+.caption You get a blocker by [[https://www.memecreator.org][memegenerator.net]]
+
+## The "Not my problem"
+
+Every change is important! If you see any issue, address it! Don't just approve, because you don't care! 
+
+**You are actively harming the codebase!**
+
+Instead **address every issue** you can find!
+
+.image https://i.imgflip.com/x4ix0.jpg
+.caption Not my problem by [[https://i.imgflip.com/x4ix0.jpg][imgflip.com]]
+
+## The bad "teacher"
+
+If you find an issue and you just know how to solve it. 
+
+**JUST TELL EVERYONE**!
+
+Don't let the author in a state, where the author needs to find the solution, if you already know it!
+

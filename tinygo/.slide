@@ -23,6 +23,7 @@ https://noobygames.de
 ## What is TinyGo?
 - Go for small places (Microcontroller)
 - Go for WASM (WebAssembly)
+- A new compiler based on LLVM
 
 ## 
 

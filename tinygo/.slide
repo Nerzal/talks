@@ -4,11 +4,14 @@ An introduction to TinyGo and WASM
 Tags: go, websocket
 Summary: What is TinyGo? What does TinyGo offer? And how do I implement homeautomation with TinyGo?
 
-Tobias Theel
+Tobias Theelds
 Princess and Lead Developer, Clarilab
-tobias.theel@ClariLab.de
+tobias.theel@noobygames.de
 https://noobygames.de
 @Nooby_Games
+
+## TinyGo
+.image assets/tinygo-logo.png 
 
 ## Agenda
 - What is TinyGo?
@@ -17,7 +20,15 @@ https://noobygames.de
 - 
 - Creative DIY Microcontroller Projects with TinyGo and Webassembly
 
+## What is TinyGo?
+- Go for small places (Microcontroller)
+- Go for WASM (WebAssembly)
 
-## Wait what?
+## 
+
+## Tell me about the features!
+
+
+## Libraries?
 .image assets/frontend.png _ 250
 

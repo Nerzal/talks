@@ -1,10 +1,10 @@
-# TinyGo 
+# Hello TinyGophers
 An introduction to TinyGo and WASM
-30 Mai 2021
-Tags: go, websocket
+30 May 2021
+Tags: go, tinygo, wasm
 Summary: What is TinyGo? What does TinyGo offer? And how do I implement homeautomation with TinyGo?
 
-Tobias Theelds
+Tobias Theel
 Princess and Lead Developer, Clarilab
 tobias.theel@noobygames.de
 https://noobygames.de
@@ -12,11 +12,11 @@ https://noobygames.de
 
 ## TinyGo
 .image assets/tinygo-logo.png 
+- Find the documentation here: https://tinygo.org/
 
 ## Agenda
 - What is TinyGo?
 - Tell me about the features!
-- Libraries?
 - 
 - Creative DIY Microcontroller Projects with TinyGo and Webassembly
 
@@ -25,9 +25,41 @@ https://noobygames.de
 - Go for WASM (WebAssembly)
 - A new compiler based on LLVM
 
-## 
+## Some numbers
+- Currently 62 microcontroller boards are supported
+    - Arduino Uno
+    - Ardafruit Feather M0
+    - Nintendo Switch
+    - https://github.com/tinygo-org/tinygo
+- Currently 65 devices are supported
+    - BMP280 temperature/barometer sensor (I2C)
+    - HC-SR04 Ultrasonic Distance sensor (GPIO)
+    - ST7735 TFT display (SPI)
+    - https://github.com/tinygo-org/drivers
+
+## Code Size
+.code code/hello-world/main.go
+
+## Code Size #2
+.image assets/comparison-size.png 
+.caption main compiled with Go vs main-tiny compiled with TinyGo
+
+- 0,04 Megabyte when compiled with TinyGo
+- 1,21 Megabyte when compiled with Go
 
 ## Tell me about the features!
+
+## Language support
+- TinyGo supports a big subset of Go
+    - Slices, Channels, Interfaces, Goroutines, defer
+- WASM/WASI targets with some exceptions
+    - Garbage collection
+
+## What is not working?
+- Not every Go program can be compiled yet
+- Not every function of every go std package is fully implemented
+- Reflection has been reimplemented
+- JSON
 
 
 ## Libraries?

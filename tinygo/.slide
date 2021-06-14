@@ -68,7 +68,7 @@ https://noobygames.de
 - JSON 
     - Serialization & Deserialization that relies on reflection in general
 
-## How do you with interfaces like GPIO, SPI etc?
+## How do you work with interfaces like GPIO, SPI etc?
 
 ## Blinky
 .code code/blinky/main.go
@@ -77,8 +77,6 @@ https://noobygames.de
 Set the target board and pass the path to the main
 
     tinygo flash --target=arduino-nano33 tinygo/code/blinky/main.go
-
-
 
 ## Libraries?
 

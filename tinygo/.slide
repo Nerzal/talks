@@ -17,8 +17,8 @@ https://noobygames.de
 ## Agenda
 - What is TinyGo?
 - Tell me about the features!
+- How do you with interfaces like GPIO, SPI etc?
 - 
-- Creative DIY Microcontroller Projects with TinyGo and Webassembly
 
 ## What is TinyGo?
 - Go for small places (Microcontroller)
@@ -50,6 +50,12 @@ https://noobygames.de
 ## Tell me about the features!
 
 ## Language support
+.code code/goroutines/main.go
+
+## Channels
+.code code/channels/main.go
+
+## So?
 - TinyGo supports a big subset of Go
     - Slices, Channels, Interfaces, Goroutines, defer
 - WASM/WASI targets with some exceptions
@@ -59,9 +65,51 @@ https://noobygames.de
 - Not every Go program can be compiled yet
 - Not every function of every go std package is fully implemented
 - Reflection has been reimplemented
-- JSON
+- JSON 
+    - Serialization & Deserialization that relies on reflection in general
+
+## How do you with interfaces like GPIO, SPI etc?
+
+## Blinky
+.code code/blinky/main.go
+
+## Flashing
+Set the target board and pass the path to the main
+
+    tinygo flash --target=arduino-nano33 tinygo/code/blinky/main.go
+
 
 
 ## Libraries?
-.image assets/frontend.png _ 250
+
+
+## Do i have to implement everything on my own?!
+No
+
+## TinyGo got you covered
+.image assets/tinygo-stuff.png _ 1000
+.caption Screenshot of TinyGo Github repositories
+
+## Get in touch with TinyGo
+1. Follow @TinyGolang on Twitter
+1. Join the #tinygo channel on the gophers slack
+
+We are there to help you out :) 
+
+## I wrote a book <3 
+.image assets/B16555_MockupCover.jpg _ 400
+
+## What do you learn?
+1. How to setup TinyGo + IDE
+1. Basics of microcontroller development
+1. GPIO/SPI/I2C etc. 
+1. How to write your own drivers
+1. How to use WiFi and send data over the network
+1. How to build web apps using WASM
+
+## Where can u get it?
+
+Basically at every bookstore.
+
+Here is a link to help u out: https://packt.link/a/1800560206
 

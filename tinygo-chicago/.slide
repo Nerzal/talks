@@ -4,7 +4,7 @@ An introduction to TinyGo and WASM
 Tags: go, tinygo, wasm
 Summary: What is TinyGo? What does TinyGo offer? And how do I implement homeautomation with TinyGo?
 
-Tobias Theel
+Tobias Theel | Nerzal
 Princess and Lead Developer, Clarilab
 tobias.theel@noobygames.de
 https://noobygames.de
@@ -12,18 +12,17 @@ https://noobygames.de
 
 ## TinyGo
 .image assets/tinygo-logo.png 
-- Find the documentation here: https://tinygo.org/
 
 ## Agenda
 - What is TinyGo?
 - Tell me about the features!
-- How do you with interfaces like GPIO, SPI etc?
-- 
+- How do you work with interfaces like GPIO, SPI etc?
+- WASM
 
 ## What is TinyGo?
 - Go for small places (Microcontroller)
 - Go for WASM (WebAssembly)
-- A new compiler based on LLVM
+- A new compiler for Go written in Go that makes use of the LLVM compiler toolchain
 
 ## Some numbers
 - Currently 62 microcontroller boards are supported
@@ -57,9 +56,8 @@ https://noobygames.de
 
 ## So?
 - TinyGo supports a big subset of Go
-    - Slices, Channels, Interfaces, Goroutines, defer
-- WASM/WASI targets with some exceptions
-    - Garbage collection
+    - Slices, Channels, Interfaces, Goroutines, defer, Garbage Collection
+- WASM/WASI
 
 ## What is not working?
 - Not every Go program can be compiled yet
@@ -68,29 +66,100 @@ https://noobygames.de
 - JSON 
     - Serialization & Deserialization that relies on reflection in general
 
+## Is my microcontroller (fully) supported?
+.image assets/supported-interfaces.png _ 800
+.caption screenshot taken from the TinyGo documentation
+
 ## How do you work with interfaces like GPIO, SPI etc?
 
 ## Blinky
 .code code/blinky/main.go
+
+[https://tinygo.org/docs/tutorials/blinky/](https://tinygo.org/docs/tutorials/blinky/)
 
 ## Flashing
 Set the target board and pass the path to the main
 
     tinygo flash --target=arduino-nano33 tinygo/code/blinky/main.go
 
+Reminder: Don't forget to prove that this is working
+
 ## Libraries?
 
 
-## Do i have to implement everything on my own?!
-No
+## Do I have to implement everything on my own?!
+**No**
 
 ## TinyGo got you covered
 .image assets/tinygo-stuff.png _ 1000
 .caption Screenshot of TinyGo Github repositories
 
+## WASM
+
+## Why TinyGo?!
+.image assets/go-vs-tinygo-wasm.png _ 800
+.caption Binary size comparison of Go and TinyGo
+
+The Go compiled binary is 30 times the size of the TinyGo compiled binary!
+
+## DemoTime
+1. start the server
+2. open page in browser
+3. showcase 
+4. don't forget to open the dev tools!
+5. oh and please explain some things, while you are at it!
+
+## The server
+.code code/dashboard/server
+
+## Important files
+1. index.html
+1. wasm.js
+1. wasm_exec.js
+1. wasm.wasm
+
+## index.html
+.code code/dashboard/index.html
+
+## wasm.js
+Initialize the wasm environment
+
+.code code/dashboard/wasmjs
+
+## wasm_exec.js
+So called glue code. Implements the syscall/js api
+
+.code code/dashboard/wasm_exec
+
+## wasm.wasm
+Compiled wasm binary
+
+.code code/dashboard/wasm
+
+## wasm.go 
+
+.code code/dashboard/wasm.go
+
+## login component
+
+.code code/dashboard/logincomponent
+
+## click event handler
+
+.code code/dashboard/clickhandler
+
+## Vugu
+.image assets/vugu.png _ 650
+
+[https://github.com/vugu/vugu](https://www.twitch.tv/lapipatv)
+
+
 ## Get in touch with TinyGo
-1. Follow @TinyGolang on Twitter
-1. Join the #tinygo channel on the gophers slack
+1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter
+1. Join the #tinygo channel on the [Gophers Slack](https://gophers.slack.com) 
+1. Follow [https://www.twitch.tv/lapipatv](https://www.twitch.tv/lapipatv) where [deadprogram (Ron Evans)](https://twitter.com/deadprogram) hacks on microcontrollers
+1. Visit [https://tinygo.org](https://tinygo.org), which recently has been completely revamped
+
 
 We are there to help you out :) 
 
@@ -109,5 +178,12 @@ We are there to help you out :)
 
 Basically at every bookstore.
 
-Here is a link to help u out: https://packt.link/a/1800560206
+Here is a link to help u out: [https://packt.link/a/1800560206](https://packt.link/a/1800560206)
 
+## Repositories
+
+[home automation project](https://github.com/Nerzal/homeautomation)
+
+[my published talks](https://github.com/Nerzal/talks)
+
+[tinydom](https://github.com/Nerzal/tinydom)

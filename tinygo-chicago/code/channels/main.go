@@ -1,9 +1,9 @@
 package main
 
-var myChannel chan int
-
 func main() {
-	myChannel = make(chan int)
+	myChannel := make(chan int)
+
+	go asyncFunction(myChannel)
 
 	for {
 		println(<-myChannel)

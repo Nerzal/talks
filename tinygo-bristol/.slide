@@ -1,6 +1,6 @@
 # Hello TinyGophers
 An introduction to TinyGo and WASM
-30 May 2021
+30 Jun 2021
 Tags: go, tinygo, wasm
 Summary: What is TinyGo? What does TinyGo offer? And how do I implement homeautomation with TinyGo?
 
@@ -11,7 +11,18 @@ https://noobygames.de
 @Nooby_Games
 
 ## TinyGo
+
+What is it about?! (hint below)
+
 .image assets/tinygo-logo.png 
+.caption TinyGo logo
+
+## DemoTime
+1. start the server
+2. open page in browser
+3. showcase 
+4. don't forget to open the dev tools!
+5. oh and please explain some things, while you are at it!
 
 ## Agenda
 - What is TinyGo?
@@ -114,17 +125,19 @@ Reminder: Don't forget to prove that this is working
 
 The Go compiled binary is 30 times the size of the TinyGo compiled binary!
 
-## DemoTime
-1. start the server
-2. open page in browser
-3. showcase 
-4. don't forget to open the dev tools!
-5. oh and please explain some things, while you are at it!
+## Home automation dashboard
+
+Goals:
+
+1. Control LED strips 
+    1. Turn on/off
+    1. Change color
+1. Turn on coffee machine
 
 ## The server
 .code code/dashboard/server
 
-## Important files
+## Interesting files
 1. index.html
 1. wasm.js
 1. wasm_exec.js
@@ -152,6 +165,20 @@ Compiled wasm binary
 
 .code code/dashboard/wasm.go
 
+## tinydom
+
+1. TinyGo compatible DOM manipulation library
+1. Wraps syscall/js
+1. Custom types to provide a nice API
+
+## tinydom custom types
+
+.image assets/tinydom-types.png _ 800
+.caption Screenshot of the implemented custom types
+
+
+[https://github.com/Nerzal/tinydom](https://github.com/Nerzal/tinydom)
+
 ## login component
 
 .code code/dashboard/logincomponent
@@ -163,7 +190,7 @@ Compiled wasm binary
 ## Vugu
 .image assets/vugu.png _ 650
 
-[https://github.com/vugu/vugu](https://www.twitch.tv/lapipatv)
+[https://github.com/vugu/vugu](https://github.com/vugu/vugu)
 
 
 ## Get in touch with TinyGo
@@ -201,3 +228,5 @@ Here is a link to help u out: [https://packt.link/a/1800560206](https://packt.li
 [tinydom](https://github.com/Nerzal/tinydom)
 
 And big thanks to [https://test.mosquitto.org/](https://test.mosquitto.org/)
+
+

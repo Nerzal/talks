@@ -1,0 +1,208 @@
+# Software Architecture
+From requirements to architecture
+28 Jul 2021
+Tags: go, architecture
+Summary: Analyzing existing pieces of software and identifying problems. Also gives a brief introduction to software architecture.
+
+Tobias Theel | Nerzal
+Princess and Lead Developer, Clarilab
+tobias.theel@noobygames.de
+https://noobygames.de
+@Nooby_Games
+
+## 
+.image assets/software_po.jpg _ 700
+.caption The struggles of product owners
+
+## Agenda
+1. What is architecture?
+1. Analyzing an existing piece of software
+1. Cohesion and coupling
+1. General Takeaways
+
+## 
+.image assets/architecture.png _ 1000
+.caption Softwarearchitecture vs Design
+
+## Its about the structure
+Possible structures
+
+1. Flat
+2. Layered
+3. Layered but modular
+4. Domain driven
+5. Hexagonal
+
+## Flat
+.image assets/flat.png _ 400
+.caption Everything is in one place
+
+## Layered
+.image assets/layered.png _ 500
+.caption Dependencies only point downwards
+
+## Layered but modular but broken
+.image assets/architecture_example.png _ 1000
+.caption Dependencies only point downwards... and sideways..wait what?!
+
+## What is the correct structure for my project
+.image assets/it_depends.jpg _ 700
+.caption Well...shit.
+
+## Analyzing an existing piece of software
+
+## ISO 25010
+.image assets/iso25010.png _ 1000
+.caption Software Quality ISO source: iso25000.com
+
+## What you get from your PO
+1. Functional requirements
+
+## Functional Requirements
+1. Functional Suitability
+
+    1.1 Feature is correct / complete 
+
+1. Usability
+
+    2.1 We need a color blind mode
+
+1. (Performance Efficiency)
+
+    3.1 Bank Account login should not take longer than 3 seconds
+
+1. (Reliability)
+
+    4.1 The App should not crash, when an error occurs
+
+1. (Security)
+
+    5.1 We need a login
+
+## What your PO does not tell u
+1. Nonfunctional requirements
+
+## Nonfunctional requirements
+1. Compatibility
+
+    1.1 Ten years from now, the System should be able to expose data to Product X
+
+1. Reliability
+
+    2.1 An order must not get lost, when any error happens. The order must remain and the faulty process must be repeated.
+
+1. Maintainability
+
+    3.1 Modularity: A change to one component not have a huge impact on other components.
+
+
+## Nonfunctional requirements #2
+
+4. Portability
+
+    4.1 A customer might come up with a server, that has no Java. Our customers do not have webbrowsers. (wtf?!)
+
+5. (Performance Efficiency)
+
+    5.1 The app should not take more than 64Kb of RAM! (lol)
+
+6. (Reliability)
+
+    6.1 The pods on our cluster not should restart all 5 minutes, due to OOM or other reasons.
+
+7. (Security)
+
+    7.1 Messages sent to the API must be signed.
+
+## You cannot have it all
+
+1. An increase in Security might lead to a loss of Performance Effiency
+1. An increase in Performance Effiency might lead to a loss of Maintainability
+
+So you have to talk to/with your PO about these effects and find a consensus.
+
+## Takeaways
+
+Include your early PO in the process. When talking about requirements, also talk about nonfunctional requirements.
+
+Or the other way around: 
+PO -> Include your developers, when working on requirements. 
+
+## Signs of bad architecture / low quality code
+
+1. Even simple features take "long" to implement
+1. The number of bugs is continously rising
+1. Adding something new will not happen, without breaking existing things
+1. Customers quit
+1. Parts of software / the complete software "must" be rewritten regularly
+1. Developers need the search function in order to find places in code
+1. Developers don't want to work on the software
+1. It is not easy to write tests
+
+## Static Code Analyzing
+
+To find problems in the part of **Maintainability** you can use static code analyzer like **SonareQube**.
+
+Use *LoC per function*, *LoC per file* and *Cyclomatic complexity* as reference values to find worrysome places in your code.
+
+## Graph your dependencies
+
+For really small projects just use go mod graph.
+
+In bigger projects you'll need some sort of graph visualization to help you out.
+
+## Goda to the rescue
+
+There are lots of ways to visualize dependency graphs. One of the cooler tools is goda
+
+.image assets/goda.png _ 1000
+.caption Visualization of goda dependencies
+
+https://github.com/loov/goda
+
+## Goda queries
+
+.image assets/goda-queries.png _ 800
+.caption Visualization of a subset of goda queries
+
+## Cohesion and coupling
+
+Goal: strong cohesion and lose coupling
+
+## Bad
+.image assets/strong_coupling.png _ 1000
+.caption Lots of external dependencies vs only a few inner dependencies
+
+## Good
+.image assets/lose_coupling.png _ 1000
+.caption A few external dependencies vs lots of inner dependencies
+
+## General Takeaways
+
+## Dont do architecture alone
+.image assets/architekturdiskussion.png _ 750
+.caption Other people have other point of views -> better solutions
+
+## Document your decisions
+
+.image assets/architecture_documentation.png _ 650
+.caption Documenting things, is going to help you later. A new intern joins the team? Easy, show them your architecture images.
+
+## Get your PO involved
+
+Your PO really knows the domain. 
+
+So your PO is able to help you to cut your components.
+
+## Shit in shit out (SHISHO)
+
+Uncomplete & unclear requirements -> bad & uncomplete software (architecture)
+
+How do you review a **Pullrequest** for a feature if the **Requirements** are not even written down?
+
+## Stick to one structure approach
+
+After starting your project make sure that everyone is aware of the plan and stick to it.
+If multiple approach begin to mix in a single project you'll end up in a huge mess.
+
+

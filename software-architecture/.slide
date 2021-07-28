@@ -177,6 +177,10 @@ Goal: strong cohesion and lose coupling
 .image assets/lose_coupling.png _ 1000
 .caption A few external dependencies vs lots of inner dependencies
 
+## The Go way of decoupling
+.image assets/the-go-way.png 500 _
+.caption Accept interfaces, return structs
+
 ## General Takeaways
 
 ## Dont do architecture alone

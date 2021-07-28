@@ -209,4 +209,10 @@ How do you review a **Pullrequest** for a feature if the **Requirements** are no
 After starting your project make sure that everyone is aware of the plan and stick to it.
 If multiple approach begin to mix in a single project you'll end up in a huge mess.
 
+## Architecture & Design before you start coding
+
+Think of architecture & design solutions, before you start coding. 
+Maybe implement a Design step in your process, where you can create a design in form of an image, api documentation, Unit- or Integrationtests or plain text.
+
+
 

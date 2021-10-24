@@ -103,7 +103,15 @@ WiFi Coprocessor:
 
 .code code/wifi/connect.go
 
+## Summary
+
+1. Set SSID and password
+2. Initialize SPI and WiFi driver
+3. Trigger the connection attempt using the `SetPassphrase` function
+
 ## Send Data over the network
+
+
 
 ## Livedemo
 
@@ -133,13 +141,3 @@ We are there to help you out.
 Basically at every bookstore.
 
 Here is a link to help u out: [https://packt.link/a/1800560206](https://packt.link/a/1800560206)
-
-## Repositories
-
-[home automation project](https://github.com/Nerzal/homeautomation)
-
-[my published talks](https://github.com/Nerzal/talks)
-
-[tinydom](https://github.com/Nerzal/tinydom)
-
-And big thanks to [https://test.mosquitto.org/](https://test.mosquitto.org/)

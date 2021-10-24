@@ -14,6 +14,9 @@ https://noobygames.des
 
 - What is TinyGo?
 - The Arduino Nano 33 IoT
+- Setup a WiFi connection
+- Send Data over the network
+- Livedemo
 
 ## What is TinyGo?
 
@@ -71,9 +74,38 @@ Microcontroller:
 WiFi Coprocessor:
 > u-blox NINA-W102 (ESP32)
 
-
 .image assets/arduino-nano-33-iot.png _ 600
 .caption Image of [[https://cdn.shopify.com/s/files/1/0438/4735/2471/products/ABX00027_03.front_e538f30f-0eaa-4055-82b9-1d7aa468b3ed_1000x750.jpg?v=1629821421][Arduino Nano 33 IoT]]
+
+## TinyGo support
+
+.image assets/arduino-nano-tinygo.png _ 500
+
+.caption Image of [[https://tinygo.org/docs/reference/microcontrollers/arduino-nano33/][Arduino Nano 33 IoT support]]
+
+## Summary
+
+1. 3.3V microcontroller board
+2. Powerful WiFi Coprocessor
+3. Very good TinyGo support
+
+## Setup a WiFi connection
+
+## Setup variables
+
+.code code/wifi/vars.go
+
+## Initialize interfaces
+
+.code code/wifi/setup.go
+
+## Connect to accesspoint
+
+.code code/wifi/connect.go
+
+## Send Data over the network
+
+## Livedemo
 
 ## Get in touch with TinyGo
 1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter

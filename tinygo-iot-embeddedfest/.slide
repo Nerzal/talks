@@ -13,6 +13,7 @@ https://noobygames.des
 ## Agenda
 
 - What is TinyGo?
+- The Arduino Nano 33 IoT
 
 ## What is TinyGo?
 
@@ -54,6 +55,25 @@ Not everything is implemented yet.
 
 .image assets/tinygo-std-lib2.png _ 350
 .caption Screenshot from  [[https://tinygo.org/docs/reference/lang-support/stdlib/][TinyGo]]
+
+## Summary
+
+1. TinyGo executables are really small
+2. The microcontroller support is integrated into the std libaries
+3. Some std libaries are not or not completely implemented
+
+## The Arduino Nano 33 IoT
+
+Microcontroller:
+
+> SAMD21 Cortex®-M0+ 32bit low power ARM MCU
+
+WiFi Coprocessor:
+> u-blox NINA-W102 (ESP32)
+
+
+.image assets/arduino-nano-33-iot.png _ 600
+.caption Image of [[https://cdn.shopify.com/s/files/1/0438/4735/2471/products/ABX00027_03.front_e538f30f-0eaa-4055-82b9-1d7aa468b3ed_1000x750.jpg?v=1629821421][Arduino Nano 33 IoT]]
 
 ## Get in touch with TinyGo
 1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter

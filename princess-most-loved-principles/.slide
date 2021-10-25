@@ -1,0 +1,124 @@
+# Princess most loved principles and patterns
+And y u should also love them!
+28 Jul 2021
+Tags: go, architecture, design, patterns
+Summary: Princess Thelingers top 3 principles and patterns
+
+Tobias Theel | Nerzal
+Princess and Lead Developer, Clarilab
+tobias.theel@noobygames.de
+https://noobygames.de
+@Nooby_Games
+
+## 
+
+.image assets/martin-luther-cleancode.jpg 500 _
+.caption I also have that dream
+
+## Agenda
+
+1. IOSP
+1. Accept Interfaces, return structs
+1. YAGNI
+1. Principle of Least Astonishment
+
+## IOSP
+
+Integration Operation Segregation Principle. 
+
+-> Segregate operations from integrations.
+
+## Integration
+
+A function calls other functions. 
+
+You could also say, that a function **integrates other functions**
+
+"Method does not contain any logic, but only calls from other methods of the same code base. Then it is called integration."
+
+##
+
+.code code/integrating.go
+
+## Benefits 
+
+1. Easy to understand
+1. Easy to extend
+1. Easy to write integration tests
+
+## Operation
+
+A function that only contains if-else, switch-case or an api call.
+
+"A method contains only logic, i.e. transformations, control structures or I/O or more generally: API calls. Then it is called operation."
+
+## 
+
+.code code/operation.go
+
+## Benefits 
+
+1. Easy to understand
+1. Easy to extend
+1. Easy to write unit tests
+
+## Accept interfaces - return structures
+
+Accept interfaces and return structs in your objects.
+
+This is the **idiomatic** way of using interfaces in go.
+
+## 
+.code code/acceptinterface.go
+
+## Benefits
+
+1. Easy to understand
+1. Looser coupling
+1. Easy to write tests
+1. Small interfaces
+
+## You aint gonna need it
+
+**Do NOT implement things, that are not exactly required.**
+
+## 
+
+1. Unclear requirements
+1. Being ready for the future
+
+## Benefits
+
+1. Code easy to understand
+1. Code exactly reflects the requirements
+1. Code easy to maintain
+1. Cheaper and faster development
+
+
+## Principle of least astonishment
+A package, a module or a function should behave as you would expect.
+We do not want suprises. 
+
+## 
+
+.code code/astonishing.go
+
+Function name & return values missmatch.
+
+## 
+
+.code code/astonishing2.go
+
+Function name and .. WTF is happening over here?
+
+## 
+
+.image assets/honk.jpg 500 _
+.caption Please dont to such things
+
+## Benefits
+
+1. Easy to understand
+2. Looser coupling
+3. Easy to write tests
+

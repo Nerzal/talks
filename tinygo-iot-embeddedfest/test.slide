@@ -1,0 +1,143 @@
+# IoT in TinyGo
+An introduction to TinyGo with examples that are based on IoT projects
+03 Dec 2021
+Tags: go, tinygo
+Summary: What is TinyGo? What does TinyGo offer? How do I set up IoT projects with TinyGo?
+
+Tobias Theel | Nerzal
+Lead Developer at ClariLab
+tobias.theel@noobygames.de
+https://noobygames.des
+@Nooby_Games
+
+## Agenda
+
+- What is TinyGo?
+- The Arduino Nano 33 IoT
+- Setup a WiFi connection
+- Send Data over the network
+- Livedemo
+
+## What is TinyGo?
+
+1. A new compiler
+2. A new implementation of the Go std libraries
+
+## New compiler benefits
+
+## Hello World
+
+.play code/hello/main.go
+
+## Comparison
+
+go build -o go-hello code/hello/main.go 
+
+> -rwxrwxr-x  1 tobias tobias 1157998 Okt 21 20:06 go-hello
+
+tinygo build --target=arduino -gc=none -o tinygo-hello.hex code/hello/main.go 
+
+> -rw-rw-r--  1 tobias tobias    1332 Okt 21 20:07 tinygo-hello.hex
+
+## New std library benefits
+
+1. Packages are optimized for microcontrollers
+2. The machine package
+
+## The machine package
+
+1. Implemented per microcontroller board
+2. Offers constants for pins
+3. Offers access to all interfaces on a microcontroller board
+
+## Downsides
+
+Not everything is implemented yet.
+
+## Example
+
+.image assets/tinygo-std-lib2.png _ 350
+.caption Screenshot from  [[https://tinygo.org/docs/reference/lang-support/stdlib/][TinyGo]]
+
+## Summary
+
+1. TinyGo executables are really small
+2. The microcontroller support is integrated into the std libaries
+3. Some std libaries are not or not completely implemented
+
+## The Arduino Nano 33 IoT
+
+Microcontroller:
+
+> SAMD21 Cortex®-M0+ 32bit low power ARM MCU
+
+WiFi Coprocessor:
+> u-blox NINA-W102 (ESP32)
+
+.image assets/arduino-nano-33-iot.png _ 600
+.caption Image of [[https://cdn.shopify.com/s/files/1/0438/4735/2471/products/ABX00027_03.front_e538f30f-0eaa-4055-82b9-1d7aa468b3ed_1000x750.jpg?v=1629821421][Arduino Nano 33 IoT]]
+
+## TinyGo support
+
+.image assets/arduino-nano-tinygo.png _ 500
+
+.caption Image of [[https://tinygo.org/docs/reference/microcontrollers/arduino-nano33/][Arduino Nano 33 IoT support]]
+
+## Summary
+
+1. 3.3V microcontroller board
+2. Powerful WiFi Coprocessor
+3. Very good TinyGo support
+
+## Setup a WiFi connection
+
+## Setup variables
+
+.code code/wifi/vars.go
+
+## Initialize interfaces
+
+.code code/wifi/setup.go
+
+## Connect to accesspoint
+
+.code code/wifi/connect.go
+
+## Summary
+
+1. Set SSID and password
+2. Initialize SPI and WiFi driver
+3. Trigger the connection attempt using the `SetPassphrase` function
+
+## Send Data over the network
+
+
+
+## Livedemo
+
+## Get in touch with TinyGo
+1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter
+1. Join the #tinygo channel on the [Gophers Slack](https://gophers.slack.com) 
+1. Follow [https://www.twitch.tv/lapipatv](https://www.twitch.tv/lapipatv) where [deadprogram (Ron Evans)](https://twitter.com/deadprogram) hacks on microcontrollers
+1. Visit [https://tinygo.org](https://tinygo.org), which recently has been completely revamped
+
+We are there to help you out.
+
+## Learning Ressources
+
+.image assets/B16555_MockupCover.jpg _ 400
+
+## What do you learn?
+
+1. How to setup TinyGo + IDE
+1. Basics of microcontroller development
+1. GPIO/SPI/I2C etc. 
+1. How to write your own drivers
+1. How to use WiFi and send data over the network
+1. How to build web apps using WASM
+
+## Where can u get it?
+
+Basically at every bookstore.
+
+Here is a link to help u out: [https://packt.link/a/1800560206](https://packt.link/a/1800560206)

@@ -1,0 +1,317 @@
+# MITRE 2021 Top 25 CWE
+You should be aware of these
+28 Oct 2021
+Tags: info sec
+Summary: Princess Thelingers top 3 principles and patterns
+
+Tobias Theel | Nerzal
+Princess and Lead Developer, Clarilab
+tobias.theel@noobygames.de
+https://noobygames.de
+@Nooby_Games
+
+## What?
+
+1. Top 25 CWE (Common Weakness Enumeration)
+2. They have a list [here](https://cwe.mitre.org/top25/archive/2021/2021_cwe_top25.html)
+
+## 1. CWE-787 Out-of-bounds Write
+
+.play -edit code/outofbounds/main.go
+
+Not that big of a deal in managed languages.
+It's a bigger problem in C, Rust etc. pp
+
+## 2. CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+
+.code code/xss/main.php
+
+We could now insert any function we want into the parameter. Yep, thats dangerous.
+
+Mainly targets scripting languages. So the thing you find in the Web.
+
+Why Scriptlanguages? They don't need to be compiled and can directly be executed.
+So validate an cleanup your input!
+
+## 3. CWE-125 Out-of-bounds Read
+
+.play -edit code/outofboundsread/main.go
+
+Mainly a problem in non managed languages.
+
+How could this be a problem? 
+Imagine no exception is being thrown, and the program just reads whatever it finds at the address in the RAM. That could be your password.
+
+## 4. CWE-20 Improper Input Validation
+
+.play -edit code/inputvalidation/main.go
+
+Validate your Inputs carefully!
+
+Use fuzzing!
+
+## 5. CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
+
+.code code/cwe78/main.php
+
+What could possibly go wrong on OS commands?
+
+How about that?
+
+**`; rm -rf`**
+
+Validate your inputs, neutralize shit! :D 
+
+## 6. CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+
+.image assets/exploits_of_a_mom.png _ 950
+.caption XKCD Comic - [[Exploits of a mom][https://xkcd.com/327/]]
+
+## 7. CWE-416 Use After Free
+
+`Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code. `
+
+Source:  [https://cwe.mitre.org/data/definitions/416.html](https://cwe.mitre.org/data/definitions/416.html)
+
+No Problem in Java, C#, Go etc.
+Could be a big problem in C, C+, C++
+(all puns intended)
+
+## 8. CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+
+.play -edit code/cwe22/main.go
+
+## 9. CWE-352 Cross-Site Request Forgery (CSRF)
+
+`The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request. `
+
+Source: [https://cwe.mitre.org/data/definitions/352.html](https://cwe.mitre.org/data/definitions/352.html)
+
+1. Your server gets a request
+2. You validate the access token. Nice!
+3. ...
+4. You file a data breach to your InfoSec team.
+5. Ooops?!
+
+What happened?
+
+A third party used the clients browser to forge a request o_O
+
+Please visit the source linked above for possible mitigation tactics.
+
+## 10. CWE-434 Unrestricted Upload of File with Dangerous Type
+
+1. You allow file updates
+2. Nice dude uploads superhack.php
+3. ...
+4. You file a security incident report to your InfoSec team.
+
+Restrict the file types you accept.
+
+You have a PDF upload? 
+
+**GOOD THEN ONLY ACCEPT PDFS!**
+
+## 11. CWE-306 Missing Authentication for Critical Function
+
+1. You have an API, which handles bank accounts
+2. You have no Authentication
+3. ...
+4. You file a security incident report to your InfoSec team.
+
+**There is no such reason to not have authentication for your critical data and functions!**
+
+## 12. CWE-190 Integer Overflow or Wraparound
+
+.play -edit code/cwe190/main.go
+
+1. Not nice, easy to find
+2. Use proper data types
+3. Or Elon Musk calls your support and asks why the f his account balance is negative?!
+
+## 13. CWE-502 Deserialization of Untrusted Data
+
+1. You get an Auth-Token
+2. You deserialize the auth token
+3. ...
+4. You file a security incident report to your InfoSec team.
+
+What the heck happened?!
+
+We have used a scripting language, the **auth token contained code from an attacker**.
+
+Now we are using python and pickle to deserialize stuff. The code tells pickle to spawn a new process and .. well the code has fun on our system.
+
+How to avoid? Check best practices for your programming language.
+
+## 14. CWE-287 Improper Authentication
+
+1. You get a request
+2. You authenticate the user and set cookies
+3. ...
+4. You file a security incident report to your InfoSec team.
+
+Wait?! What?! Why?
+
+1. You check for cookies
+2. Attacker has set `isAdministrator` cookies themself
+3. ...
+4. Attacker administrates your application
+
+## 14. What can we do?!
+
+Do not implement Auth mechanisms yourself. (Also, please do not implement crypto logic yourself)
+
+Just use Keycloak or similar services and use `standard auth flows` like `OAuth2`
+
+## 15. CWE-476 NULL Pointer Dereference
+
+.play code/cwe476/main.go
+
+What can we do?
+
+1. Unit Tests
+2. Integration Tests
+3. System Tests
+4. E2E Tests
+
+## 16. CWE-798 Use of Hard-coded Credentials
+
+What shall i explain here?
+
+Do NOT hardcode credentials!
+
+How to prevent? 
+
+Use linters, static code analysis tools, proper Code Review etc.
+
+## 17. CWE-119 Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+`The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.`
+
+Source: [https://cwe.mitre.org/data/definitions/119.html](https://cwe.mitre.org/data/definitions/119.html)
+
+Where is that dangerous? 
+
+1. C
+2. C++
+3. Assembly
+4. other non managed languagess
+
+## 17. How?
+
+You have an buffer, get user input, the buffer overflows and then you could `overwrite critical data in the RAM`
+
+## 18. CWE-862 Missing Authorization
+
+1. User authenticates
+2. User accesses ressources
+3. ...
+4. You file a security incident report to your InfoSec team.
+
+**Why?**
+You have not validated the users permissions, when the User accessed ressources, that the user should not have access to.
+
+## 19. CWE-276 Incorrect Default Permissions
+
+`During installation, installed file permissions are set to allow anyone to modify those files.`
+
+Source: [https://cwe.mitre.org/data/definitions/276.html](https://cwe.mitre.org/data/definitions/276.html)
+
+That is also a problem, when setting up docker containers where the user has to many priviliges.
+
+## 20. CWE-200 Exposure of Sensitive Information to an Unauthorized Actor
+
+`The product exposes sensitive information to an actor that is not explicitly authorized to have access to that information. `
+
+Source: [https://cwe.mitre.org/data/definitions/200.html](https://cwe.mitre.org/data/definitions/200.html)
+
+**What?**
+
+The list how to expose data accidently is long.
+
+1. You log to much information.
+2. You have an unsecured request route.
+3. You leak sensitive data in any response (internal state of your program, OS, installed packages)
+4. Code is being leaked 
+5. etc. 
+
+## 21. CWE-522 Insufficiently Protected Credentials
+
+`The product transmits or stores authentication credentials, but it uses an insecure method that is susceptible to unauthorized interception and/or retrieval. `
+
+Source: [https://cwe.mitre.org/data/definitions/522.html](https://cwe.mitre.org/data/definitions/522.html)
+
+1. User changes password.
+2. ...
+3. You file a security incident report to your InfoSec team.
+
+**Why?**
+
+You have not checked, that the user to change the password is actually the user.
+
+## 21. More Problems?
+
+1. You transmit user credentials via http ?!
+2. You store user credentials unencrypted.
+3. You store your own credentials for third party services unencrypted.
+
+## 22. CWE-732 Incorrect Permission Assignment for Critical Resource
+
+1. User makes a request
+2. ...
+3. You file a security incident report to your InfoSec team.
+
+**Why?**
+
+You forgot to check the users permission to do so.
+
+## 22. What else?
+
+You created a file with incorrect permission for example: 777
+
+## 23. CWE-611 Improper Restriction of XML External Entity Reference
+
+`The software processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output. `
+
+Source: [https://cwe.mitre.org/data/definitions/611.html](https://cwe.mitre.org/data/definitions/611.html)
+
+**What?**
+
+In easy words: XML documents can specify that external ressources should be loaded into the document.
+
+You could put common paths to credentials into the document
+
+## 23. How to prevent?
+
+**Deactivate XML Eternal Entity References in your XML parser.**
+
+## 24. CWE-918 Server-Side Request Forgery (SSRF)
+
+1. You accept a request, that contains an URL, where you fetch data from.
+2. ... 
+3. You file a security incident report to your InfoSec team.
+
+**What?** 
+
+The attacker used your API as a proxy to ressources that could be behind firewalls etc.
+
+It could also be used to port scan etc.
+
+## 24. How to prevent?
+
+1. Don't do such things? :D
+2. Don't let the consumer specify the port
+3. Validate the URL, maybe also blacklist URLs 
+
+## 25. CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')
+
+1. You accept a request and fire a command on your system based on the input. 
+2. ...
+3. You file a security incident report to your InfoSec team.
+
+**Why?** 
+
+1. You have not neutralized special elements in a command.
+
+This works similar to SQL injection.

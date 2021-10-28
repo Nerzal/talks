@@ -19,8 +19,8 @@ https://noobygames.de
 
 .play -edit code/outofbounds/main.go
 
-Not that big of a deal in managed languages.
-It's a bigger problem in C, Rust etc. pp
+In many languages this is only an annoying bug.
+It's a bigger problem in C, C++ leads to unpredictable behavior.
 
 ## 2. CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
 
@@ -37,7 +37,7 @@ So validate an cleanup your input!
 
 .play -edit code/outofboundsread/main.go
 
-Mainly a problem in non managed languages.
+Only an annoying bug in most languages.
 
 How could this be a problem? 
 Imagine no exception is being thrown, and the program just reads whatever it finds at the address in the RAM. That could be your password.
@@ -196,7 +196,7 @@ Where is that dangerous?
 1. C
 2. C++
 3. Assembly
-4. other non managed languagess
+4. other languages
 
 ## 17. How?
 
@@ -205,12 +205,12 @@ You have an buffer, get user input, the buffer overflows and then you could `ove
 ## 18. CWE-862 Missing Authorization
 
 1. User authenticates
-2. User accesses ressources
+2. User accesses resources
 3. ...
 4. You file a security incident report to your InfoSec team.
 
 **Why?**
-You have not validated the users permissions, when the User accessed ressources, that the user should not have access to.
+You have not validated the users permissions, when the User accessed resources, that the user should not have access to.
 
 ## 19. CWE-276 Incorrect Default Permissions
 
@@ -218,7 +218,7 @@ You have not validated the users permissions, when the User accessed ressources,
 
 Source: [https://cwe.mitre.org/data/definitions/276.html](https://cwe.mitre.org/data/definitions/276.html)
 
-That is also a problem, when setting up docker containers where the user has to many priviliges.
+That is also a problem, when setting up docker containers where the user has to many privileges.
 
 ## 20. CWE-200 Exposure of Sensitive Information to an Unauthorized Actor
 
@@ -228,7 +228,7 @@ Source: [https://cwe.mitre.org/data/definitions/200.html](https://cwe.mitre.org/
 
 **What?**
 
-The list how to expose data accidently is long.
+The list how to expose data accidentally is long.
 
 1. You log to much information.
 2. You have an unsecured request route.
@@ -253,8 +253,8 @@ You have not checked, that the user to change the password is actually the user.
 ## 21. More Problems?
 
 1. You transmit user credentials via http ?!
-2. You store user credentials unencrypted.
-3. You store your own credentials for third party services unencrypted.
+2. You store user credentials in clear text.
+3. You store your own credentials for third party services in clear text.
 
 ## 22. CWE-732 Incorrect Permission Assignment for Critical Resource
 
@@ -278,7 +278,7 @@ Source: [https://cwe.mitre.org/data/definitions/611.html](https://cwe.mitre.org/
 
 **What?**
 
-In easy words: XML documents can specify that external ressources should be loaded into the document.
+In easy words: XML documents can specify that external resources should be loaded into the document.
 
 You could put common paths to credentials into the document
 
@@ -289,12 +289,12 @@ You could put common paths to credentials into the document
 ## 24. CWE-918 Server-Side Request Forgery (SSRF)
 
 1. You accept a request, that contains an URL, where you fetch data from.
-2. ... 
+2. ...
 3. You file a security incident report to your InfoSec team.
 
-**What?** 
+**What?**
 
-The attacker used your API as a proxy to ressources that could be behind firewalls etc.
+The attacker used your API as a proxy to resources that could be behind firewalls etc.
 
 It could also be used to port scan etc.
 
@@ -302,15 +302,15 @@ It could also be used to port scan etc.
 
 1. Don't do such things? :D
 2. Don't let the consumer specify the port
-3. Validate the URL, maybe also blacklist URLs 
+3. Validate the URL, maybe also blacklist URLs
 
 ## 25. CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')
 
-1. You accept a request and fire a command on your system based on the input. 
+1. You accept a request and fire a command on your system based on the input.
 2. ...
 3. You file a security incident report to your InfoSec team.
 
-**Why?** 
+**Why?**
 
 1. You have not neutralized special elements in a command.
 

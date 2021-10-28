@@ -12,7 +12,7 @@ func loadFromPath(path string) string {
 	case "/www/website/cats":
 		return "funny-cat.jpg" // imagine this being a io read call to the hdd
 	case "/www/website/dogs":
-		return "funny-cat.jpg"
+		return "funny-fog.jpg"
 	case "/www/website/secret":
 		return "mySecretDatabasePasswort1234!"
 	default:

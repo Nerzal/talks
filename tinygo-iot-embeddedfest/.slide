@@ -33,11 +33,11 @@ https://noobygames.des
 
 go build -o go-hello code/hello/main.go 
 
-> -rwxrwxr-x  1 tobias tobias 1157998 Okt 21 20:06 go-hello
+> -rwxrwxr-x  1 tobias tobias `1157998` Okt 21 20:06 go-hello
 
 tinygo build --target=arduino -gc=none -o tinygo-hello.hex code/hello/main.go 
 
-> -rw-rw-r--  1 tobias tobias    1332 Okt 21 20:07 tinygo-hello.hex
+> -rw-rw-r--  1 tobias tobias    `1332` Okt 21 20:07 tinygo-hello.hex
 
 ## New std library benefits
 

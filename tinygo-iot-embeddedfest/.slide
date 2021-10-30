@@ -119,6 +119,10 @@ WiFi Coprocessor:
 
 ## Putting all together
 
+.code code/iot/init/initialize.go
+
+## The main logic
+
 .code code/iot/main.go
 
 ## Livedemo

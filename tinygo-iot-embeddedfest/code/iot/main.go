@@ -17,10 +17,16 @@ func main() {
 	client := InitializeMQTTClient()
 
 	for {
+		if !sensor.Connected() {
+			println("waiting for temperature sensor")
+		}
+
 		temp, err := sensor.ReadTemperature()
 		if err != nil {
 			println(err.Error())
 		}
+
+		println("sending temperature:", temp)
 
 		mqttclient.PublishMessage(client, temp)
 		time.Sleep(time.Second)

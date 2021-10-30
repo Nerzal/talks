@@ -111,11 +111,11 @@ WiFi Coprocessor:
 
 ## Setup the MQTT connection
 
-.code code/iot/mqtt/mqtt.go
+.code code/iot/mqttclient/mqtt.go
 
 ## Publish messages
 
-.code code/iot/mqtt/publish.go
+.code code/iot/mqttclient/publish.go
 
 ## Putting all together
 

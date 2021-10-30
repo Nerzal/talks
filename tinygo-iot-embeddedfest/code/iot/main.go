@@ -2,13 +2,13 @@ package main
 
 import ( // OMIT
 	// OMIT
-	"device/arm"
-	"machine"
-	"time" // OMIT
+	"device/arm" // OMIT
+	"machine"    // OMIT
+	"time"       // OMIT
 
 	"github.com/Nerzal/talks/tinygo-iot-embeddedfest/code/iot/mqtt" // OMIT
 	"github.com/Nerzal/talks/tinygo-iot-embeddedfest/code/iot/wifi" // OMIT
-	"tinygo.org/x/drivers/lsm6ds3"
+	"tinygo.org/x/drivers/lsm6ds3"                                  // OMIT
 	// OMIT
 ) // OMIT
 

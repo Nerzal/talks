@@ -2,8 +2,8 @@ package mqtt
 
 import ( // OMIT
 	// OMIT
-	"device/arm"
-	"time" // OMIT
+	"device/arm" // OMIT
+	"time"       // OMIT
 
 	"tinygo.org/x/drivers/net/mqtt" // OMIT
 	"tinygo.org/x/drivers/wifinina" // OMIT

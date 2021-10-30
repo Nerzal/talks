@@ -19,6 +19,7 @@ func main() {
 	for {
 		if !sensor.Connected() {
 			println("waiting for temperature sensor")
+			continue
 		}
 
 		temp, err := sensor.ReadTemperature()
@@ -36,7 +37,9 @@ func main() {
 // OMIT
 func InitializeSensor() lsm6ds3.Device { // OMIT
 	machine.I2C0.Configure(machine.I2CConfig{}) // OMIT
-	return lsm6ds3.New(machine.I2C0)            // OMIT
+	sensor := lsm6ds3.New(machine.I2C0)         // OMIT
+	sensor.Configure(lsm6ds3.Configuration{})   // OMIT
+	return sensor                               // OMIT
 } // OMIT
 // OMIT
 func InitializeMQTTClient() mqtt.Client { // OMIT

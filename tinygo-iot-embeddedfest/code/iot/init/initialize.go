@@ -13,7 +13,9 @@ import ( // OMIT
 // OMIT
 func InitializeSensor() lsm6ds3.Device {
 	machine.I2C0.Configure(machine.I2CConfig{})
-	return lsm6ds3.New(machine.I2C0)
+	sensor := lsm6ds3.New(machine.I2C0)
+	sensor.Configure(lsm6ds3.Configuration{})
+	return sensor
 }
 
 func InitializeMQTTClient() mqtt.Client {

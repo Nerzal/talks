@@ -3,6 +3,7 @@ package mqttclient
 import ( // OMIT
 	// OMIT
 	"device/arm" // OMIT
+	"strconv"    // OMIT
 	"time"       // OMIT
 
 	"tinygo.org/x/drivers/net/mqtt" // OMIT
@@ -11,7 +12,7 @@ import ( // OMIT
 // OMIT
 func PublishMessage(client mqtt.Client, temp int32) {
 	println("sending message") // OMIT
-	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, temp)
+	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, strconv.Itoa(temp))
 	token.Wait()
 
 	err := token.Error()

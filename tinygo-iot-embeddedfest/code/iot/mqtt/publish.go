@@ -9,9 +9,9 @@ import ( // OMIT
 	"tinygo.org/x/drivers/wifinina" // OMIT
 ) // OMIT
 // OMIT
-func PublishMessage(client mqtt.Client) {
+func PublishMessage(client mqtt.Client, temp int32) {
 	println("sending message") // OMIT
-	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, "22")
+	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, temp)
 	token.Wait()
 
 	err := token.Error()

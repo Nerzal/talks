@@ -12,7 +12,7 @@ import ( // OMIT
 // OMIT
 func PublishMessage(client mqtt.Client, temp int32) {
 	println("sending message") // OMIT
-	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, strconv.Itoa(int(temp)))
+	token := client.Publish("embeddedfest/tinygo/iot/temperature", 2, true, strconv.Itoa(int(temp/1000)))
 	token.Wait()
 
 	err := token.Error()

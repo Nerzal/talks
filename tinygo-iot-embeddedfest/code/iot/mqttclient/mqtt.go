@@ -4,7 +4,7 @@ import ( // OMIT
 	"tinygo.org/x/drivers/net/mqtt" // OMIT
 ) // OMIT
 // OMIT
-const server = "tcp://test.mosquitto.org:1883"
+const server = "tcp://noobygames.de:1883"
 
 func NewClient() mqtt.Client {
 	opts := mqtt.NewClientOptions()

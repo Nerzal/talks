@@ -27,7 +27,7 @@ func main() {
 			println(err.Error())
 		}
 
-		println("sending temperature:", temp/1000)
+		println("sending temperature:", temp/1000, "°C")
 
 		mqttclient.PublishMessage(client, temp)
 		time.Sleep(time.Second)

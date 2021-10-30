@@ -1,4 +1,4 @@
-package mqtt
+package mqttclient
 
 import ( // OMIT
 	"tinygo.org/x/drivers/net/mqtt" // OMIT

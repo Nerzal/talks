@@ -109,9 +109,17 @@ WiFi Coprocessor:
 2. Initialize SPI and WiFi driver
 3. Trigger the connection attempt using the `SetPassphrase` function
 
-## Send Data over the network
+## Setup the MQTT connection
 
+.code code/iot/mqtt/mqtt.go
 
+## Publish messages
+
+.code code/iot/mqtt/publish.go
+
+## Putting all together
+
+.code code/iot/main.go
 
 ## Livedemo
 

@@ -127,6 +127,8 @@ WiFi Coprocessor:
 
 ## Livedemo
 
+.image assets/mqtt-explorer.png _ 700
+
 ## Get in touch with TinyGo
 1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter
 1. Join the #tinygo channel on the [Gophers Slack](https://gophers.slack.com) 

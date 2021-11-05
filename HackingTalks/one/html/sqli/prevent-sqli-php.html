@@ -1,0 +1,12 @@
+<br>
+<h3>What did they do wrong?</h3>
+<br>
+<b>Recently exploited search.php</b>
+<br>
+<pre><code style="color:red">$stmt = $pdo->query("SELECT * from users WHERE id = '$term'")</code></pre>
+<br><br>
+
+<b>Failed to exploit login.php</b>
+<br>
+<pre><code style="color:green">$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+<br><br>$stmt->execute([$username,$password]);</code></pre>

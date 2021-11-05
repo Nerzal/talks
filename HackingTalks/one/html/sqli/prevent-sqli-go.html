@@ -1,0 +1,11 @@
+<br>
+<h3>Since noone is using PHP; an example in go:</h3>
+<br>
+<b>Dangerous!</b>
+<br>
+<pre><code style="color:red">db.Query(fmt.Sprintf("SELECT * FROM user WHERE id = %s", id))</code></pre>
+<br><br>
+
+<b>Save!</b>
+<br>
+<pre><code style="color:green">db.Query("SELECT * FROM user WHERE id = ?", id)</code></pre>

@@ -1,0 +1,13 @@
+<ul>
+    <li>ALL User Data is untrusted!</li>
+    <li>NEVER put untrusted Data in HTML Document</li>
+    <li>if REALLY needed, HTML/Js/CSS Encode Data before</li>
+    <li>URL Encode Request URLs (parameters)</li>
+    <li>Quote untrusted Data in HTML attributes</li>
+    <ul>
+        <pre><code>&ltdiv attr="...ENCODE UNTRUSTED DATA BEFORE PUTTING HERE..."&gt</code></pre>
+        <li>Quoted attributes can only be broken out of with &quot; or &#39;</li>
+        <li>Unquoted attributes with: [space] % * + , - / ; &lt; = &gt; ^ and |</li>
+    </ul>
+    <li>Don't try it yourself! Use libs!</li>
+</ul>

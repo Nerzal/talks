@@ -1,0 +1,15 @@
+<ol>
+    <li><b>Reflected XSS</b></li>
+    <ul>
+        <li>Application recieves Data in HTTP Request</li>
+        <li>Data being sent is included (reflected) in Response</li>
+        <li>Example:</li>
+        <ul>
+            <li><code>https://10.10.10.154/index.php?msg=User%20created.</code></li>
+        </ul>
+        <li>Possbile Reflected XSS:</li>
+        <ul>
+            <li><code>https://10.10.10.154/index.php?msg=<b>&ltscript&gtsome.evil.javaScript()&lt/script&gt</b></code></li>
+        </ul>
+    </ul>
+</ol>

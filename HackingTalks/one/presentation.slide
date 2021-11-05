@@ -1,4 +1,4 @@
-Hacking101 #1: XSS, SQLI, XSRF
+Hacking101 #1: XSS, SQLI, CSRF
 November 4th 2021
 
 Yannick Peter
@@ -85,8 +85,10 @@ Just Kidding
 .image pics/csrf.svg 600 800
 
 * Cross Site Request Forgery
-* What is happening?
-- TODO
+.html html/csrf/basics.html
+
+* Prevent CSRF (XSRF)
+.html html/csrf/prevent-csrf.html
 
 * MITRE prospect
 .html html/mitre/mitre-prosp.html

@@ -21,7 +21,7 @@ Your PO jumps into the Pit and brings a wild UserStory.
 
 > As a User i demand to be able to provide feedback using a feedback window.
 
-On the User story, there is a small post-it from the Software Architect
+On the User story, there is a small post-it from your Software Architect
 
 > Deploy that shit in it's own service
 
@@ -97,3 +97,36 @@ You ask question like:
 When you have clear requirements and exactly know, what comes in, what goes out and how does the environment look like.
 
 ## Bottom-Up
+
+Your PO jumps into the Pit and brings a wild UserStory.
+
+> As a User i demand to be able to order that new different product in your web shop.
+
+On the User story, there is a small post-it from your Software Architect
+
+> FML, i have no idea how that new data provider shit looks like or works. gl hf. surrender at 20 gg wp!
+
+<br>
+<br>
+
+**So what do you do now?**
+
+## Sprint Planning
+
+You are pretty upset, cause you have no information how the data you need to handle is going to look like and the architect the PO also has no vision of the outcome. So you start creating tasks.
+
+.image assets/bottom-up-01.png _ 250
+.caption Starting with low level tickets, that describe a part of the functionality
+
+## What have u done?
+
+You have created a bunch of tickets, that describe lots of smaller problems.
+
+All of them should talk to a foreign API, with an unfamiliar specification.
+
+- Search
+- Get available products
+- Order product
+- Create Invoice
+- Check Payment Status
+- Fetch prices

@@ -1,0 +1,99 @@
+# Top-Down vs Bottom-Up
+Different ways of approaching a problem.
+27 Apr 2022
+Tags: go, software architecture, design
+Summary: What are the Top-Down and Bottom-Up approaches?
+
+Tobias Theel | Nerzal
+Lead Developer at ClariLab
+tobias.theel@noobygames.de
+https://noobygames.des
+@Nooby_Games
+
+## Agenda
+
+- Top-Down
+- Bottom-Up
+
+## Top-Down
+
+Your PO jumps into the Pit and brings a wild UserStory.
+
+> As a User i demand to be able to provide feedback using a feedback window.
+
+On the User story, there is a small post-it from the Software Architect
+
+> Deploy that shit in it's own service
+
+<br>
+<br>
+
+**So what do you do now?**
+
+## Creating Tasks
+
+Now you sit in your Sprint planning and need to create Tasks for that User Story.
+
+.image assets/user-story-tasks.png _ 800
+.caption Screenshot from Azure DevOps Sprint Board
+
+## What happened?
+
+As a developer you have naturally splitted a bigger problem into several smaller problems.
+
+1. Deploy a new Service
+1. Provide an API
+1. Notify Customer Success
+
+## Splitting problems
+
+You have successfully created 3 problems out of a single problem!
+
+Congratulations! You are now a developer.
+
+.image assets/top-down-01.png
+.caption Problem divided into 3 sub problems
+
+<br>
+
+**But what are we going to do now?**
+
+## We create more problems
+
+.image assets/top-down-02.png _ 500
+.caption Sub problem divided into even more sub problems
+
+**But what are we going to do now?**
+
+## We create more problems
+
+.image assets/top-down-03.png _ 300
+.caption Sub problem divided into even more sub problems
+
+**But what are we going to do now?**
+
+## Top-Down approach
+
+We continue the process shown in the previous slides, until we reach units, that cannot be broken down into more problems anymore.
+
+If your Task is to build a new Car, you don't start with designing a Screw, that might be needed to be put somewhere in the motor.
+You might start at a more abstract top level approach.
+
+You ask question like:
+
+- How many doors should it have?
+- How long should it be?
+- What type of motor should it get?
+
+## Top-Down Summary
+
+- Start with an abstract problem
+- Divide that big problem into several smaller and less abstract problems
+- Repeat the division until it makes no sense anymore to divide the issues further
+- Typical approach in lots of tasks (even not dev related)
+
+## When to use?
+
+When you have clear requirements and exactly know, what comes in, what goes out and how does the environment look like.
+
+## Bottom-Up

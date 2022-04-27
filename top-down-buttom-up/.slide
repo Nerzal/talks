@@ -130,3 +130,42 @@ All of them should talk to a foreign API, with an unfamiliar specification.
 - Create Invoice
 - Check Payment Status
 - Fetch prices
+
+**But what are we going to do now?**
+
+## Implement the foreign API endpoints
+
+We start by creating functions, that talk to the foreign API.
+
+The lowest or most inner layers of your application are typically the database layer and the layers that directly talk to third parties.
+
+.image assets/bottom-up-02.png
+.caption Implement the lowest layer of your application first.
+
+## Find common groups / abstractions
+
+We start by creating functions, that talk to the foreign API.
+As we do now know, what the foreign API expects as inputs and what comes out of that API, we can start to create some abstractions.
+
+.image assets/bottom-up-03.png
+.caption Find common functionality, group by business cases
+
+## Repeat the process
+
+We repeat the process of finding common groups and abstractions until we have reached the highest layer of our application.
+The highest layer of our example application is the REST handler, which handles REST-API requests and then calls the business layer.
+
+.image assets/bottom-up-04.png _ 600
+.caption Repeat until we have reached the top layer
+
+## Summary Bottom-Up
+
+- Starting at the smallest / lowest bits
+- Find common groups and abstractions
+- Repeat until at highest level
+
+Can be helpful, when:
+
+- the environment is foreign
+- requirements are bad
+- you have a hard time finding top level abstractions

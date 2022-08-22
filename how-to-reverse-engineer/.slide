@@ -1,0 +1,167 @@
+# How to reverse engineer
+WebApplications
+28 Jun 2022
+Tags: development
+Summary: An introduction to the basics of web app reverse engineering
+
+Tobias Theel
+Princess and Lead Developer, Clarilab
+tobias.theel@ClariLab.de
+https://noobygames.de
+@Nooby_Games
+
+## Why reverse engineer?
+
+- Gain knowledge about an unknown system
+- Port software to other platforms
+- Write APIs for web applications, that only provide a frontend
+
+## What is reverse engineering?
+
+.image ./assets/reverse-engineering.drawio.png
+.caption Reverse Engineering by Theelinger
+
+## What's that thingy you guys did with those 3rd party apps?
+
+- In WebApps the frontend code is often a WhiteBox, cause the JS code is downloaded.
+- It's easy to gain knowledge in such an environment.
+
+.image ./assets/reverse-engineer-webapp.drawio.png
+.caption Reverse Engineer WebApp by Theelinger
+
+## What tools can we use?
+
+- Browser DevTools
+- curl
+- API Testers (insomnia, postman, etc.)
+
+## DevTools
+
+.image ./assets/traderegister-search.png _ 1000
+.caption Screenshot of a search request in the german Traderegister
+
+## Network Tab
+
+- lists all requests from Browser->Server
+- Shows used HTTP method
+- Used URL
+- Response type
+  
+.image ./assets/network-tab.png _ 1000
+.caption Screenshot of the network tab in the german Traderegister
+
+## Learnings Network Tab
+
+- Search uses a POST Request
+- WebApp uses XHTML
+- Search Endpoint is /rp_web/normalesuche.xhtml
+
+## Headers
+
+- select a request to get more details
+
+.image ./assets/headers.png 450 _
+.caption Screenshot of the headers in the german Traderegister
+
+## Learnings Headers
+
+- We send cookie data in the header
+- The Server is written in Java
+- We need to take care of the session management
+
+## Request
+
+- request tab shows the payload
+
+.image ./assets/request.png
+.caption Screenshot of request body in the german Traderegister
+
+## Learnings Request
+
+- payload as form-data
+- looks like, we can directly talk to the API
+
+## Response
+
+- request tab shows the payload
+
+.image ./assets/response.png
+.caption Screenshot of response body in the german Traderegister
+
+## Learnings Response
+
+- The APP works with partial responses
+- It tells us the next page URL to fetch :troll:
+
+## Fetch Search results
+
+.image ./assets/next-call.png _ 1000
+.caption Screenshot of search result in the german Traderegister
+
+## Search Results response
+
+.image ./assets/search-results.png _ 1000
+.caption Screenshot of search result in the german Traderegister
+
+## The HTML tells stories
+
+- ids
+- a-tag
+
+.code ./code/searchresult/result.html
+
+## How to find the interesting bits in the HTML?
+
+- HTML uses mostly XML type syntax
+- Using X-PATH (the path to an element inside the html tree)
+- Walk the complete tree to find your element
+- Parse it with an XML parser
+
+## Read HTML as XML
+
+- etree is a powerful xml parsing and building library
+- generate a new xml doc from html bytes
+
+.code ./code/searchresult/readdoc.go
+
+## Use X-Path to find objects
+
+.code ./code/searchresult/fetchids.go
+
+
+## Important info isn't shown in the html?
+
+- If you are unlucky you might run into WebApps, that dynamically generate most of the content
+- Happens when using an API-Tester, curl or firing HTTP-Requests using a programming language
+- Reason: JavaScript needs to run, to build the page
+- Solution: start a headless browser, that renders the page and fetch the contents
+
+## General Tips
+
+- delete the history in the network tab, before you try a new action
+- check what cookies are being set
+- check request & response headers
+- Try & Error
+- Every little detail can be important
+- Often lots of parameters aren't required
+
+## General Tips #2
+
+- understand how authentication works
+- understand how session handling works
+- try out every single feature with multiple parameters
+- **TAKE NOTES**
+- developers often use open source code, you'll find hints to used libraries in the code, headers, query parameters, cookies etc. **google them**
+
+## General Tips #3
+
+- learn the basics of HTML
+- learn HTTP basics (Methods, Payload types etc.)
+- gain a basic understanding of JS
+- try things even if they feel like absolute nonsense
+
+## What can I do to reverse engineer an API of a program installed on my system?
+
+- Monitor the packages on your Network adaptor
+- WireShark is a great tool
+- Decompiling the code can help

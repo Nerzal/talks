@@ -1,0 +1,112 @@
+# How to approacha a problem
+As a dev
+22 Aug 2022
+Tags: go, development
+Summary: Ideas on how to approach dev related tasks.
+
+Tobias Theel
+Princess and Lead Developer, Clarilab
+tobias.theel@ClariLab.de
+https://noobygames.de
+@Nooby_Games
+
+##
+
+.image ./assets/no-idea.jpg
+.caption Image from [Know Your Meme](https://i.kym-cdn.com/entries/icons/facebook/000/008/342/ihave.jpg)
+
+## Introduction
+
+In the life of a developer, especially at the beginning, we sometimes faces Tasks to solve and have no idea where to start. We have a huge wall in front of us and can't see whats behind it.
+
+I want to provide some methods, that helped and are still helping me to get over this wall.
+
+## Agenda
+
+- The Task
+- Gain Knowledge
+- The Writer
+- The Artist
+- Pair- and Mob-Programming
+- Open-Discussion
+
+## The Task
+
+.image ./assets/the-task.png _ 600
+.caption Screenshot of a product backlog item
+
+## So what do we have to do?
+
+For our case we concentrate on the Tenant-Configuration setting.
+
+1. We must provide a possibility to set the configuration
+2. We must provide the possibility to get the configuration
+3. When setting configuration all users must get a flag, that tells the user service, that they have to set 2FA in order to proceed with login
+
+## Gain Knowledge
+
+Do I know all components, that are effected?
+
+- You might have to touch several services.
+- In a monolith you might have to touch several packages.
+
+## Gain Knowledge Part 2
+
+Have I or my team solved a similar in problem in the past?
+
+1. Helps identifying pitfalls
+2. Gain free and fast knowledge
+3. You might get a blueprint on how to solve the problem
+
+## Gain Knowledge Part 3
+
+Is my understanding of all affected technologies good enough to solve the issue?
+
+1. Enables you to do research on technologies
+2. Identifies possibly pitfalls
+
+## The Writer
+
+The writer writes down the steps needed to solve an issue. This can be done in many ways.
+
+Examples:
+
+1. Write a list of steps in each function
+2. Writing a general todo list
+3. Paraphrase the complete problem in your very own language
+
+## Example
+
+.code ./code/writer_01.go
+
+## The Artist
+
+The artist visualizes the problem. This can be done by very simple graphics containing of rectangles and lines, it can be in the form of UML diagrams, or whatever way of visualizing the problem helps.
+
+Examples:
+
+1. Create a very basic image that contains all affected components.
+2. Create an UML sequence diagram
+
+## Example
+
+.image ./assets/artist_01.png _ 600
+.caption Simple diagram of the affected components.
+
+## Example
+
+.image ./assets/artist_02.png _ 600
+.caption Simple sequence diagram.
+
+## Helpful tools
+
+1. draw.io
+2. plantUML
+
+## Pair- and Mob-Programming
+
+Multiply developer brains tend to be very effective in finding good solutions.
+
+## Open Discussion
+
+What ways of approaching problems do you have?

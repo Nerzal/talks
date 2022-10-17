@@ -1,4 +1,4 @@
-# How to approach a problem
+# Text to Image AI
 
 View slides using go present.
 
@@ -6,5 +6,3 @@ View slides using go present.
 $ present
 2021/03/25 12:16:38 Open your web browser and visit http://127.0.0.1:3999
 ```
-
-FeatureComparison Image: https://www.telerik.com/blogs/websockets-vs-server-sent-events

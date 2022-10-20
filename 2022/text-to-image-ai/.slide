@@ -32,6 +32,10 @@ https://noobygames.de
 
 .image assets/1666031373265.jpg _ 450
 
+## "Easy" vocabulary
+
+.image assets/word-cloud.png _ 1000
+
 ## How it started
 
 .image assets/man_dunking_basketball_infront_of_city.jpg 400 _
@@ -46,6 +50,7 @@ https://noobygames.de
 ## finding words
 
 .image assets/man_dunking_basketball_infront_of_city_words.jpg 400 _
+.caption image from: https://www.trainingsworld.com/wp-content/uploads/2013/01/dunking-dunk-lernen-uebungen.jpg edited by Theelinger
 
 ## building sentences
 
@@ -55,4 +60,108 @@ https://noobygames.de
 
 ## combine them
 
-A man dunks a basketball infront of a city and white background
+A **[man]** **[dunks]** a **[basketball]** infront of a **[city]** and **[white]** background
+
+<br><br>
+
+Objects: man, basketball, city
+
+Features: white
+
+Actions: dunks
+
+## state of the art?
+
+.image assets/DenseCap_(Johnson_et_al.,_2016)_(cropped).png
+.caption source: https://en.wikipedia.org/wiki/Automatic_image_annotation
+
+## How to do the opposite?
+
+Combine 2 neuronal networks.
+
+1. Vector Quantized Generative Adversarial Network (VQGAN)
+2. Contrastive Language-Image Pre-training (CLIP)
+
+## CLIP
+
+> "CLIP (Contrastive Language-Image Pre-Training) is a neural network trained on a variety of (image, text) pairs. It can be instructed in natural language to predict the most relevant text snippet, given an image, without directly optimizing for the task, similarly to the zero-shot capabilities of GPT-2 and 3. [...]"
+> 
+Source: [https://github.com/openai/CLIP](https://github.com/openai/CLIP)
+
+## CLIP #2
+
+1. CLIP knows how a Ball looks like
+2. CLIP knows the "visual features" of a men
+3. CLIP knows how to dunk a Basketball
+4. CLIP is able to provide matching Text to every* image
+
+*Every image in case, the model is trained on a huge basis.
+
+## CLIP #3
+
+.image assets/CLIP.png _ 1000
+
+## Have u tried it out yourself?
+
+JUB!
+
+## Iteration 01
+
+.image assets/dog_playing_with_ball_01.png 500 500
+.caption Iteration 01 - dog playing with ball
+
+## Iteration 15
+
+.image assets/dog_playing_with_ball_15.png 500 500
+.caption Iteration 15 - dog playing with ball
+
+## Iteration 75
+
+.image assets/dog_playing_with_ball_75.png 500 500
+.caption Iteration 75 - dog playing with ball
+
+## Iteration 135
+
+.image assets/dog_playing_with_ball_135.png 500 500
+.caption Iteration 135 - dog playing with ball
+
+## Iteration 240
+
+.image assets/dog_playing_with_ball_240.png 500 500
+.caption Iteration 240 - dog playing with ball
+
+## Iteration 465
+
+.image assets/dog_playing_with_ball_465.png 500 500
+.caption Iteration 465 - dog playing with ball
+
+## Iteration 720
+
+.image assets/dog_playing_with_ball_720.png 500 500
+.caption Iteration 720 - dog playing with ball
+
+
+## Try it yourself?
+
+Run on your on machine:
+
+> [step by step guide](https://github.com/nerdyrodent/VQGAN-CLIP)
+
+Run in google collab:
+
+> [click through codebook](https://colab.research.google.com/drive/1ZAus_gn2RhTZWzOWUpPERNC0Q8OhZRTZ#scrollTo=JX56bq4rEKIp)
+
+Find Pre-trained models here:
+> [taming-transformers](https://github.com/CompVis/taming-transformers)
+
+Find a complete paper on the topic here:
+> [taming-transformers-for-high-resolution-image-synthesis](https://arxiv.org/abs/2012.09841?amp=1)
+
+Find the talk about the paper:
+> [robin rombach taming tansformers for high resolution image synthesis](https://www.youtube.com/watch?v=fy153-yXSQk)
+
+## Further further reading
+
+[CLIP GitHub](https://github.com/openai/CLIP)
+
+[CLIP-explained](https://www.youtube.com/watch?v=BcfAkQagEWU)

@@ -1,0 +1,145 @@
+# Software Architecture 101 
+Software Architecture and Software Quality
+28 Jul 2023
+Tags: go, architecture
+Summary: Analyzing existing pieces of software and identifying problems. Also gives a brief introduction to software architecture.
+
+Tobias Theel | Nerzal
+Kaffeetrinker at Denic
+tobias.theel@noobygames.de
+https://noobygames.de
+@Nooby_Games
+
+## Motivation
+
+.image assets/iso25010.png _ 800
+.caption ISO 25010 src: https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
+
+## Focus Today
+
+We want to write code that is easily testable.
+
+To achieve this, we can make use of some basic principles.
+
+## Agenda
+
+1. Cohesion and Coupling
+2. Inversion of Control
+
+## Cohesion
+
+**Definition:** 
+
+Cohesion refers to the degree to which the elements within a module or component are interconnected and aligned with each other.
+
+.image assets/Cohesion_1.drawio.png 400 _
+
+## High Cohesion
+
+A module with high cohesion performs a **specific task** and **contains only elements relevant to that task**. This leads to better understanding, easier maintainability, and facilitates troubleshooting.
+
+.image assets/Cohesion_2.drawio.png 400 _
+
+## Low Cohesion
+
+When a module fulfills various **unrelated tasks**, it exhibits low cohesion. This can result in **unclear code** and difficulties in maintenance.
+
+.image assets/Cohesion_3.drawio.png 400 _
+
+## Coupling
+
+**Definition:**
+
+Coupling describes the dependencies between different modules or components.
+
+.image assets/Coupling_1.drawio.png 400 _
+
+## Loose Coupling
+
+In a system with loose coupling, dependencies between modules are minimal. Changes in one module have minimal impact on other modules, promoting maintainability and flexibility.
+
+.image assets/Coupling_3.drawio.png 400 _
+
+## Tight Coupling
+
+Tight coupling occurs when modules are closely interconnected. Changes in one module can have far-reaching effects on other modules, making maintenance challenging.
+
+.image assets/Coupling_2.drawio.png 400 _
+
+## Cohesion and Coupling
+
+.image assets/cohesion-coupling.png 450 _
+.caption Image from - https://enterprisecraftsmanship.com/images/2015/2015-09-02-1.png
+
+## Graph your dependencies
+
+For really small projects just use go mod graph.
+
+In bigger projects you'll need some sort of graph visualization to help you out.
+
+## Goda to the rescue
+
+There are lots of ways to visualize dependency graphs. One of the cooler tools is goda
+
+.image assets/goda.png _ 1000
+.caption Visualization of goda dependencies
+
+https://github.com/loov/goda
+
+## Goda queries
+
+.image assets/goda-queries.png _ 800
+.caption Visualization of a subset of goda queries
+
+## Inversion of Control
+
+IoC promotes a more modular, maintainable, and testable codebase by **shifting** the **responsibility** of control and configuration **to external entities**, typically IoC containers or frameworks.
+
+## Talking about constructors
+
+.code code/ioc1.go
+
+1. Coupled through creation dependency
+2. Coupled to sql package
+
+## In a Test
+
+.code -edit code/ioc1_test.go
+
+## Inject Dependency
+
+.code code/ioc2.go
+
+1. Coupled to sql package
+
+## In a Test
+
+.play -edit code/ioc2_test.go
+
+## Resolve external dependencies
+
+.code code/ioc3.go
+
+1. Package is loosely coupled. No hard dependencies.
+
+## In a Test
+
+.play -edit code/ioc3_test.go
+
+## Turtles all the way down?
+
+.image assets/turtles.jpeg 500 _
+
+**Result:** Main package is going to have all the dependencies
+
+## Dependency Injection Frameworks
+
+1. Self Written
+2. Ninject (.net), Spring (Java)
+
+What about Go?
+Simply use interfaces on the receiver side.
+
+## Applying IoC on a different level
+
+.play -edit code/ioc4.go

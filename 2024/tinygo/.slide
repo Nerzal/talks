@@ -1,0 +1,186 @@
+# Hello TinyGophers
+An introduction to TinyGo and WASM
+09 Feb 2024
+Tags: go, tinygo, wasm
+Summary: What is TinyGo? What does TinyGo offer? And how do I implement homeautomation with TinyGo?
+
+Tobias Theel | Nerzal
+Kaffeetrinker at DENIC
+tobias.theel@noobygames.de
+https://noobygames.de
+@Nooby_Games
+
+## Agenda
+- What is TinyGo?
+- Tell me about the features!
+- How do you work with interfaces like GPIO, SPI etc?
+- WASM
+
+## What is TinyGo?
+- Go for small places (Microcontroller)
+- Go for WASM (WebAssembly)
+- Go for WASI (WebSystemInterface)
+- A new compiler for Go written in Go that makes use of the LLVM compiler toolchain
+
+## Some numbers
+- Currently 85 microcontroller boards are supported
+    - Arduino Uno
+    - Ardafruit Feather M0
+    - Nintendo Switch
+    - [https://github.com/tinygo-org/tinygo](https://github.com/tinygo-org/tinygo)
+- Currently 101 devices are supported
+    - BMP280 temperature/barometer sensor (I2C)
+    - HC-SR04 Ultrasonic Distance sensor (GPIO)
+    - ST7735 TFT display (SPI)
+    - [https://github.com/tinygo-org/drivers](https://github.com/tinygo-org/drivers)
+
+## Demo
+
+## Code Size
+.code code/hello-world/main.go
+
+## Code Size #2
+.image assets/comparison-size.png 
+.caption main compiled with Go vs main-tiny compiled with TinyGo
+
+- 0,04 Megabyte when compiled with TinyGo
+- 1,21 Megabyte when compiled with Go
+
+## Code Size #3
+
+WASM
+
+    rwxrwxr-x  1 tobias tobias   85261 Feb  9 12:14 tinygo-wasm.wasm
+    rwxrwxr-x  1 tobias tobias 1408717 Feb  9 12:14 go-wasm.wasm
+
+- 0,08 Megabyte when compiled with TinyGo
+- 1,40 Megabyte when compiled with Go
+
+## Tell me about the features!
+
+## Language support
+.code code/goroutines/main.go
+
+## Channels
+.code code/channels/main.go
+
+## So?
+- TinyGo supports a big subset of Go
+    - Slices, Channels, Interfaces, Goroutines, defer, Garbage Collection
+- WASM/WASI
+
+## What is not working?
+- Not every Go program can be compiled yet
+- Not every function of every go std package is fully implemented
+
+
+## Is my microcontroller (fully) supported?
+.image assets/supported-interfaces.png _ 800
+.caption screenshot taken from the TinyGo documentation
+
+## How do you work with interfaces like GPIO, SPI etc?
+
+## Blinky
+.code code/blinky/main.go
+
+[https://tinygo.org/docs/tutorials/blinky/](https://tinygo.org/docs/tutorials/blinky/)
+
+## Flashing
+Set the target board and pass the path to the main
+
+    tinygo flash --target=arduino-nano33 code/blinky/main.go
+
+
+Reminder: Don't forget to prove that this is working
+
+## The TinyGo Playground
+
+.image assets/tinygo-playground.png _ 800
+.caption Screenshot of the Tinygo playground
+
+[https://play.tinygo.org/](https://play.tinygo.org/)
+
+## Libraries?
+
+
+## Do I have to implement everything on my own?!
+**No**
+
+## TinyGo got you covered
+.image assets/tinygo-stuff.png _ 1000
+.caption Screenshot of TinyGo Github repositories
+
+## WASM
+
+## Whats that?
+
+"WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications."
+[https://webassembly.org/](https://webassembly.org/)
+
+## Why TinyGo?!
+.image assets/go-vs-tinygo-wasm.png _ 800
+.caption Binary size comparison of Go and TinyGo
+
+The Go compiled binary is 30 times the size of the TinyGo compiled binary!
+
+## Demo
+
+## Interesting files
+1. index.html
+1. wasm.js
+1. wasm_exec.js
+1. wasm.wasm
+
+## index.html
+Show in VSCode
+
+## wasm.js
+Show in VSCode
+
+## wasm_exec.js
+So called glue code. Implements the syscall/js api
+
+.code code/dashboard/wasm_exec
+
+## wasm.wasm
+Compiled wasm binary
+
+.code code/dashboard/wasm
+
+## wasm.go 
+
+.code code/wasm/main.go
+
+## tinydom
+
+1. TinyGo compatible DOM manipulation library
+1. Wraps syscall/js
+1. Custom types to provide a nice API
+
+## tinydom example
+
+.code code/wasm/tinydom.go
+
+
+## tinydom custom types
+
+.image assets/tinydom-types.png _ 800
+.caption Screenshot of the implemented custom types
+
+[https://github.com/Nerzal/tinydom](https://github.com/Nerzal/tinydom)
+
+
+## Vugu
+.image assets/vugu.png _ 650
+
+[https://github.com/vugu/vugu](https://github.com/vugu/vugu)
+
+
+## Get in touch with TinyGo
+1. Follow [@TinyGolang](https://twitter.com/TinyGolang) on Twitter
+1. Join the #tinygo channel on the [Gophers Slack](https://gophers.slack.com) 
+1. Follow [https://www.twitch.tv/lapipatv](https://www.twitch.tv/lapipatv) where [deadprogram (Ron Evans)](https://twitter.com/deadprogram) hacks on microcontrollers
+1. Visit [https://tinygo.org](https://tinygo.org), which recently has been completely revamped
+
+
+

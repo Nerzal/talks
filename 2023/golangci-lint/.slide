@@ -1,0 +1,77 @@
+# golangci-lint
+Theelinger labert schon wieder?!
+23 Aug 2023
+Tags: go
+Summary: Goiler linter auch für local
+
+Tobias Theel | Nerzal
+Kaffeetrinker at Denic
+tobias.theel@noobygames.de
+https://noobygames.des
+@Nooby_Games
+
+## WARUM TOBIAS?!
+
+### Beruhigt euch erstmal mal wieder <3
+
+## 
+
+.image assets/running.jpg
+
+##
+
+.image assets/lint_ignore.jpg
+
+##
+
+.image assets/bypass-lint.jpg
+
+## 
+
+.image assets/firefly.jpeg 450 _
+
+## Doch es hat Sinn
+
+.image assets/dont-be-scared.jpg
+
+## Agenda
+
+1. Warum?
+2. Was kanner?
+3. Local Usage
+4. CI Einsatz
+
+## Warum?
+
+1. Security
+2. Bug-Prevention
+3. Performance
+4. Clean Code
+5. Einheitlicher Coding Style
+6. Glücklicher Tobi Theel
+
+## Was kanner?
+
+Mach mal Doku auf
+
+## Local Usage
+
+Zeig mal.
+
+## CI Einsatz
+
+1. Pipeline failen lassen
+2. Output sammeln und in StaticCodeAnalyzer-Tools-Dingens-Weißt-Schon füttern.
+
+Zeig mal.
+
+## Aber mein Projekt hat nun dreihunderachtundsechzigmillionenfünhunderttausenddreiundsiebzig Linter Errors?!
+
+**Chill!**
+
+## Pfadfinder Regel
+
+> Hinterlasse einen Platz immer sauberer, als du ihn vorgefunden hast
+
+Unter die Pfadfinder Regel fallen aber nur Dinge, die du in 5-10 Minuten aufgeräumt hast.
+

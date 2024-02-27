@@ -1,0 +1,537 @@
+# REST API Design
+Tobi hat nen Buch gelesen
+23 Aug 2023
+Tags: go
+Summary: REST API Design Regeln?
+
+Tobias Theel | Nerzal
+Kaffeetrinker at Denic
+tobias.theel@noobygames.de
+https://noobygames.des
+@Nooby_Games
+
+## 
+
+.image assets/restapi.png 500 _
+
+##
+
+.image assets/uarealldoingitwrong.png 500 _ 
+
+
+## Motivation
+
+1. Standardize REST APIs to a certain degree
+2. Make REST APIs easy to understand
+3. Gain a common understanding of how to design REST APIs
+
+## Richardson Maturity Model
+
+.image assets/rest_level_overview.png 500 _
+.caption source: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+## Level 0 - Swamp of POX
+
+- Simply post **plain old xml** to the server. 
+- Using HTTP as tunneling for Remote Prodecure Calls.
+
+
+.image assets/level0.png 350 _
+.caption source: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+
+## Level 1 - Resources
+
+- Add resources instead to simply posting everything to the same endpoint
+
+.image assets/level1.png 350 _
+.caption source: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+## Level 2 - HTTP Verbs
+
+- Make use of HTTP Verbs instead of posting everything
+
+.image assets/level2.png 350 _
+.caption source: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+## Level 3 - Hypermedia Controls
+
+- Include links to other resources of concern.
+- Resolve coupling of Client and Server
+
+.image assets/level3.png 350 _
+.caption source: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+See also: https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
+
+## URIs
+
+> REST API designers should create URIs that convey a REST API's resource model to its potential client developers
+
+*Source: Mark Masse - REST API Design Rulebook*
+
+## Format
+
+Defined in RFC 3986
+
+`URI = schema"://"authority"/"path[ "?" query ][ "#" fragment ]`
+
+## URI Rules
+
+## Forward slash operator must be used to indicate a hierachical relationship
+
+> https://api.canvas.restapi.org/shapes/polygones/quadrilaterals/squares
+
+## A trailing forward slash should not be included in URIs
+
+Do:
+
+> https://api.canvas.restapi.org/shapes
+
+Dont:
+
+> https://api.canvas.restapi.org/shapes/
+
+## Hyphens should be used instead of underscores
+
+Do:
+
+> https://api.example.org/blogs/tobi-theel/entries/cool-blog-post
+
+Dont:
+
+> https://api.example.org/blogs/tobi_theel/entries/cool_blog_post
+
+## Lowercase letters should be preferred in URI paths
+
+1. http://api.example.org/my-folder/my-doc
+2. http://API.EXAMPLE.ORG/my-folder/my-doc
+3. http://api.example.org/My-folder/my-doc
+
+Per RFC 3986 1 and 2 can be considered identical, while 3 is its own resource.
+
+## File extensions should not be included in URIS
+
+Do:
+
+> https://api.example.org/students/tobi/data
+
+Dont: 
+
+> https://api.example.org/students/tobi/data.json
+
+Use Accept Request Header instead
+
+## Resource Archetypes
+
+A REST API is composed of four distinct resource archetypes
+
+1. Document
+2. Collection
+3. Store
+4. Controller
+
+## Document
+
+A document represents an object instance or database record.
+A document's state representation typically includes both fields with values and links to other resources.
+A document may have child resources.
+
+Example: 
+
+> GET https://api.example.org/students/tobi/data
+
+Response Example:
+
+```json
+{
+    "person": {
+        "age": 1337,
+        "name" "Tobi"
+    }
+    "_links": {
+        "skills": "https://api.example.org/students/tobi/skills"
+    }
+}
+```
+
+## Collection
+
+A collection represents a server managed directory of resources.
+A collection chooses what it wants to contain and also decides the URIs of each contained resource.
+Clients can propose new resources to be added to a collection.
+
+Examples:
+
+> http://api.example.org/leagues
+
+> http://api.example.org/leagues/seattle/teams
+
+> http://api.example.org/leagues/seattle/teams/trebuchet/players
+
+## Store
+
+A store is a client managed resource repository.
+A store lets an API client perform CRUD operations.
+A store lets the API client decide on the URI.
+
+Example:
+
+> PUT /users/1234/favorites/tobi
+
+Inserts a document named tobi into the favorites of user 1234.
+
+## Controller
+
+A controller recource behaves like a executable function.
+It has input and ouput.
+A controller must not have child resources.
+
+Example:
+
+> POST /alerts/1234/resend
+
+DO Not:
+
+> POST /alerts/1234/new-alert
+
+## URI Path Design Rules
+
+## A singular noun should be used for document names
+
+Example:
+
+> http://api.example.com/leagues/seattle/teams/denic/players/tobi
+
+The URI for the single player document "tobi" is /tobi
+
+## A plural noun should be used for collection names
+
+Example:
+
+> http://api.example.com/leagues/seattle/teams/denic/players
+
+The URI for a collection of player documents is /players
+
+## A plural noun should be used for store names
+
+Example: 
+
+> http://api.example.com/artists/tobi/playlists
+
+The URI of the store of playlists is /playlists
+
+## A verb or verb phrase should be used for controller names
+
+Example: 
+
+> http://api.example.com/students/tobi/register
+
+> http://api.example.com/databases/nic/reindex
+
+## Variable path segments may be substituted with id values
+
+Example:
+
+> http://api.example.com/leagues/{league-id}/teams/{team-id}/players/{player-id}
+
+> http://api.example.com/leagues/1234/teams/1234/players/1234
+
+
+## CRUD function names must not be used in URIs
+
+DO:
+
+> DELETE /api/users/1234
+
+DONT:
+
+> DELETE /api/users/1234/delete-user
+
+> DELETE /api/deleteUsers?id=1234
+
+> GET /api/deleteUser?id=1234
+
+> POST /api/users/1234/delete
+
+## URL Query Design
+
+`URI = schema"://"authority"/"path[ "?" query ][ "#" fragment ]`
+
+## The Query component of a URI may be used to filter collections or stores
+
+Example:
+
+> GET /users?role=admin
+
+Response:
+
+A filtered list of all users with the role "admin"
+
+## The Query component of a URI should be used to paginate collection or store results
+
+1. A REST API client should use **pageSize** and **pageStartIndex** query parameters
+
+Note: other names for that query params are totally fine.
+
+When the **complexity** of a clients pagination or filtering requirements exceeds the simple formatting capabilities of the query part, consider designing a special **controller**.
+
+## Interaction Design with HTTP
+
+When to use GET, POST, PUT, HEAD, etc.
+
+## GET and POST must not be used to tunnel other requests methods
+
+**Example:**
+
+> GET /users/1234/delete-user
+
+## GET must be used to retrieve a representation of a resource
+
+**Example:**
+
+> GET /users/1234
+
+**Response:**
+
+```json
+{
+    "user": {
+        "name": "Tobi",
+        "age": 30
+    },
+    "_links": {
+        "hobbies": "/users/1234/hobbies",
+        "foo": "bar"
+    }
+}
+```
+
+**Note:**
+
+Headers are allowed. 
+
+Using a Body in GET is technically possible but discouraged.
+
+
+## HEAD should be used to retrieve response headers
+
+HEAD should return the same response as GET, but without the body.
+Can be used to check if a resource exists or to read its metadata.
+
+## PUT must be used to both insert and update a stored resource
+
+1. **PUT** must be used to add a new resource to a store, with a URI specified by the client
+
+Example: 
+
+> PUT http://api.example.com/users/notes/{client-specified}
+
+2. **PUT** must be used to update a existing resource in a store
+
+> PUT http://api.example.com/users/notes/{client-specified}
+
+## PUT must be used to update mutable resources
+
+Example:
+
+> PUT http://api.example.com/users/1234
+
+```json
+"user": {
+    "age": 31
+}
+```
+
+## POST must be used to create a new resource in a collection
+
+Example:
+
+> POST http://api.example.com/users
+
+```json
+"user": {
+    "name": "Tobi",
+    "age": 31
+}
+```
+
+## POST must be used to execute controllers
+
+1. May include Headers
+2. May include Body
+
+Post can be used to trigger processes, that cannot be mapped to the HTTP methods.
+
+Example:
+
+> POST http://api.example.com/databases/nic/reindex
+
+## DELETE must be used to remove a resource from its parent
+
+Example:
+
+> DELETE /accounts/1234/buckets/objects/4321
+
+The object with id 4321 will be deleted.
+
+## OPTIONS should be used to retrieve metadata that describes a resources available interactions
+
+> OPTIONS /accounts/1234/buckets/objects
+
+Response should contain the **Allow-Header**, that contains useable methods.
+
+Example: 
+
+> Allow: GET, PUT, DELETE
+
+## Response Status Codes
+
+1. 1xx: Informational
+2. 2xx: Success
+3. 3xx: Redirection
+4. 4xx: Client Error
+5. 5xx: Server Error
+
+## 200 should be used to indicate nonspecific success
+
+A 200 "ok" Response should include a body.
+A 200 is used, when no other 2xx variants match.
+
+## 200 must not be used to communicate errors in the response body
+
+If you want to communicate errors, use a 4xx or 5xx response.
+A 200 indicates success not an error.
+
+## 201 must be used to indicate successful resource creation
+
+A 201 "Created" indicates that a new resource has been created at a **store** or **collection**
+In some cases a **controller** might also create a new resource. In that case a 201 is also the correct response.
+
+## 202 must be used to indicate successful start of an asynchronous operation
+
+A 202 "Accepted" indicates that an operation has successfully started.
+
+**controller** resources may send 202 responses, but no other resource types should to that.
+
+## 204 should be used when the response body is intentionally empty
+
+A 204 "No Content" is usually used in response to a **PUT**, **POST** or **DELETE** request.
+A 204 may also be used as response to a **GET** request to indicate that the requested resource exists, but has no **state representation** to include in the body.
+
+## 301 should be used to relocate resources
+
+A 301 "Moved Permanently" indicates that the API's resource model has been redesigned and a **new permanent URI** has been assigned.
+
+The REST API should specify the new URI in the response's **Location header**
+
+## 302 should not be used
+
+A 302 "Found" was intended to be used as automatic redirect behavior that only applies if the clients original request used either the **GET** or **HEAD** method. This has been commonly misinterpreted by programmers in the past.
+
+HTTP 1.1 introduced status codes 303 "See other" and 307 "Temporary Redirect", which should be used instead.
+
+## 406 must be used when the requested media type cannot be served
+
+A 406 "Not acceptable" indicates that the API is not able to generate any of the client's preferred media types.
+A Client might request **application/xml** but the API can only serve **application/json**
+
+## 409 should be used to indicate a violation of resource state
+
+A 409 "Conflict" indicates that the Client tried to put a REST API's resource into an impossible or inconsistent state.
+
+Example:
+
+A Client tries to delete a **non empty** store resource.
+
+## 412 should be used to support conditional operations
+
+A 412 "Precondition Failed" indicates that the clients specified **preconditions were not met**.
+A Client can specify preconditions in the request headers.
+
+## 415 must be used when the media type of a request's payload cannot be processed
+
+A 415 "Unsupported Media Type" indicates that the API is not able to process the provided media type.
+
+Example:
+
+A Client tries to supply **XML-encoded data**, while the API only supports **JSON-encoded data**.
+
+## 500 should be used to indicate API malfunction
+
+A 500 "Internal Server Error" is a generic error response.
+A 500 is **never a clients fault**.
+A 500 is normally caused by any kind of bug or unexpected behavior in the API.
+
+## Metadata Design
+
+## Content-Type must be used
+
+The Content-Type header names the type of data found within a request or response message body.
+
+See Media-Types for more info: https://www.iana.org/assignments/media-types/media-types.xhtml
+See also: [https://www.rfc-editor.org/rfc/rfc2046.html](https://www.rfc-editor.org/rfc/rfc2046.html)
+
+
+## Content-Length should be used
+
+The Content-Length header provides the size of the entity-body in bytes.
+
+The Content-Length can be used to check wether the correct number of bytes has been read.
+A Client can use the HEAD request to find out how many bytes will be provided in the GET request.
+
+## Last-Modified should be used in responses
+
+The Last-Modified header applies to **response messages only**.
+
+This header should always be supplied in **response to GET requests**.
+
+## Location must be used to specify the URI of a newly created resource
+
+A REST API must include the Location header to designate the URI of the newly created resource.
+
+In a 202 "Accepted" response, this header may be used to direct clients to the operational status of an asynchronous controller resource.
+
+## Cache-Control, Expires and Date response headers should be used to encourage caching
+
+When serving a representation, include a **Cache-Control** header with a max-age value (in seconds) equal to the freshness lifetime. 
+
+Example: 
+
+> Cache-Control: max-age=60, must-revalidate
+
+To support legacy HTTP 1.0 caches, a REST API should include an **Expires header** with the expiration date-time.
+REST APIs should include the **Date header** with the Date-time stamp of the response.
+
+## Caching should be encouraged
+
+The **no-cache directive will prevent any cache** serving form cached responses.
+
+Using a **small value of max-age** as apposed to adding no-cache directive helps clients fetch cached copies for a least a short while without significantly impacting freshness.
+
+## Expiration caching headers should be used with 200 responses
+
+Set expiration caching headers in responses to successful **GET** and **HEAD** requests.
+
+## Expiration caching headers may optionally be used with 3xx and 4xx responses
+
+In addition to successful responses with the 200 response code, adding caching headers to 3xx and 4xx responses is a good practice.
+
+This is known as **negative caching**.  Negative caching helps reduce the amount of redirecting and error-triggering load on a REST API.
+
+## Error Representation
+
+## A consistent form should be used to represent errors
+
+4xx and 5xx responses should return a consistent form of errors.
+
+Example:
+
+```json
+    {
+        "id": "E123",
+        "description": "General Error",
+        "details": "General error is thrown every time"        
+    }
+```
+

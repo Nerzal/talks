@@ -1,0 +1,43 @@
+# Go Generics
+Introduction to generics in go
+29 Feb 2024
+Tags: go, generics
+Summary: What do the new generic libs offer?
+
+Tobias Theel | Nerzal
+Kaffeetrinker at denic
+tobias.theel@noobygames.de
+https://blog.noobygames.de
+@Nooby_Games
+
+## Agenda
+- A brief history of generics in Go
+
+## History
+
+> "Starting with version 1.18, Go has added support for generics, also known as type parameters."
+
+What have go devs done before 1.18?
+
+## Prior 1.18
+
+ - Use workarounds with interfaces, reflection, code generation
+ - Implement same function over and over again for other types
+
+.play -edit code/01/main.go
+
+## Now
+
+.play -edit code/02/main.go
+
+## NOW!
+
+.play -edit code/03/main.go
+
+
+## NOW!!!111elf
+
+.play -edit code/04/main.go
+
+
+
